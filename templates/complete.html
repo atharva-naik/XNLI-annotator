@@ -7,14 +7,14 @@
         <title>XNLI annotation platform</title>
     </head>
     <body>
-
+        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
         <header>
             <div style="text-align: center; box-shadow: 0 15px 15px -1px rgba(0,0,0,.2); border-radius: 10px;">
                 <img src="{{ url_for('static',filename='avatar.png') }}" alt="USER" onclick="window.location.href='/'" class="profile_pic" height="35" width="35" style="margin-bottom: -15px;">
                 <h4 style="color: black; margin-top: 0; text-align: center;" class="profile">{{ USERNAME }}</h4>
             </div>
             
-            <h3 class="page_title">Annotate the Sentence Below</h3>
+            <h3 class="page_title">Annotation is Complete</h3>
         </header>
         <br>
         <!-- <h5 class="sentence">{{ PREMISE }}</h5>
@@ -23,24 +23,11 @@
             <!-- <textarea readonly class="sentence"> {{ PREMISE }} </textarea>
             <br>
             <textarea readonly class="sentence"> {{ HYPOTHESIS }} </textarea> -->
-            <h5 id="P" class="sentence"> {{ PREMISE }} </h5>
-            <h5 id="H" class="sentence"> {{ HYPOTHESIS }} </h5>
+            <h5 class="sentence"> There are no more sentences to be annotated. If you wish to end the annotation, press the submit button. If you want to revisit your annotations press the return button. <b>Note: You cannot edit your annotations any further, once you have submitted.</b></h5>
         </div>
         <div style="text-align: center;">
-            <button id="E" class="button buttonE">Entail</button>
-            <button id="C" class="button buttonC">Contradict</button>
-            <button id="N" class="button buttonN">Neutral</button>
-            <button id="U" class="button buttonU">Unaligned</button>
-            <br>
-            <button id="X" class="button buttonC">Clear</button>
-            <button id="S" class="button buttonE" onclick=pushToServer()>Save</button>
-            <br><br><br>
-            <button class="button" onclick="window.location.href='/annotate?id={{ PREV_NUM }}&user={{ USERNAME }}'">← Prev</button>
-            <button class="button" onclick="window.location.href='/annotate?id={{ NEXT_NUM }}&user={{ USERNAME }}'">Next →</button>
-            <br><br><br><br><br>
-            <h3 class="footer">Page {{ SENTENCE_NUM }}</h5>
+            <button class="button buttonC" onclick="confirmSubmission()">Submit</button>
+            <button class="button" onclick="window.location.href='/annotate?id=1&user={{ USERNAME }}'">Return</button>
         </div>
-        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
-
     </body>
 </html>

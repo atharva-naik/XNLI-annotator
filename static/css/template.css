@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+/* .generic_class {
+	font-family: 'Roboto', roboto;
+  } */
+
+  .page_title {
+    text-align: center;
+    font-family: 'Roboto';
+    color: brown;
+    font-size: 27px;
+  }
+
+  .profile {
+    font-family: 'Roboto';
+    font-size: 12px;
+    padding: 5px;
+  }
+  .profile_pic {
+    padding: 5px;
+  }
+  .profile_pic:hover {
+    background-color: violet;
+  }
+
+  .button {
+    border: none;
+    padding: 7px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: turquoise;
+    color: white;
+  }
+  .buttonE:hover {
+    background-color: #7bfc03;
+    color: white;
+  } /* Green */
+  .buttonC:hover {
+    background-color: #fc3003;
+    color: white;
+  } /* Blue */
+  .buttonN:hover {
+    background-color: #fce303;
+    color: white;
+  }
+  .buttonU:hover {
+    background-color: turquoise;
+    color: white;
+  }
+
+  .sentence {
+    padding: 8px 16px;
+    color: black;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+  }
+  .sentence::selection {
+    background-color: violet;
+    color: white;
+  }
+
+  .footer {
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Roboto';
+  }
+
+  .nav_btns {
+    background-color: transparent;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Orbitron';
+    color: turquoise;
+  }
+
+  .nav_btns:hover {
+    background-color: turquoise;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Orbitron';
+    color: white;
+  }
