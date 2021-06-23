@@ -5,7 +5,15 @@ from flask import Flask, render_template, request, jsonify
 
 app=Flask(__name__)
 assert len(sys.argv)>1, "need to give filename of the json or csv"
+ANNOTATIONS = {}
 
+def smart_int(x):
+    if x is None:
+        return 0
+    elif x == "":
+        return 0
+    else: 
+        return int(x)
 # Utility functions
 def rand_str(length=16):
     import random
@@ -59,7 +67,12 @@ def index():
 
 @app.route('/thankyou',methods=['GET','POST'])
 def thankyou():
-    # return "Hello World"
+    import pandas as pd
+    global ANNOTATIONS
+
+    for user in ANNOTATIONS:
+        pd.DataFrame(ANNOTATIONS[user]).to_csv(f"data/{user}.csv", index=False)
+
     return render_template("thankyou.html")
 
 @app.route('/annotate', methods=['GET','POST'])
@@ -85,16 +98,24 @@ def annotation_page():
 
         return render_template("template.html", **record)
 
-@app.route('/save', methods=['GET', 'POST'])
+@app.route('/save', methods=['POST'])
 def save_annotation():
-    # GET request
-    if request.method == 'GET':
-        message = {'greeting':'Hello from Flask!'}
-        return jsonify(message)  # serialize and use JSON headers
-    # POST request
-    if request.method == 'POST':
-        print(request.get_json())  # parse as JSON
-        return 'Success', 200
+    global DATASET
+    global ANNOTATIONS
+
+    data = request.get_json(force=True)  # parse as JSON
+    index = int(data["id"])
+    username = data["username"]
+    DATASET[index]["username"] = username
+    DATASET[index]["sentence1"] = data["sentence1"]
+    DATASET[index]["sentence2"] = data["sentence2"]
+    try:
+        ANNOTATIONS[username].append(DATASET[index])
+    except KeyError:
+        ANNOTATIONS[username] = [DATASET[index]]
+
+    return 'Success', 200
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=81)

@@ -5,6 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}" />
         <title>XNLI annotation platform</title>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script>
+            var currP = {{ PREMISE }};
+            var currH = {{ HYPOTHESIS }};
+            // function to refresh the P and H (make sure the annotated versions are displayed) everytime, on reloading.
+            window.onload = function() {
+                var P = document.getElementById("P")
+                var H = document.getElementById("H")
+                P.innerHTML = currP
+                H.innerHTML = currH
+            }
+        </script>
     </head>
     <body>
 
@@ -33,7 +45,7 @@
             <button id="U" class="button buttonU">Unaligned</button>
             <br>
             <button id="X" class="button buttonC">Clear</button>
-            <button id="S" class="button buttonE" onclick=pushToServer()>Save</button>
+            <button id="S" class="button buttonE">Save</button>
             <br><br><br>
             <button class="button" onclick="window.location.href='/annotate?id={{ PREV_NUM }}&user={{ USERNAME }}'">← Prev</button>
             <button class="button" onclick="window.location.href='/annotate?id={{ NEXT_NUM }}&user={{ USERNAME }}'">Next →</button>
@@ -41,6 +53,5 @@
             <h3 class="footer">Page {{ SENTENCE_NUM }}</h5>
         </div>
         <script src="{{ url_for('static',filename='js/index.js') }}"></script>
-
     </body>
 </html>

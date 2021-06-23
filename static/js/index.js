@@ -1,3 +1,6 @@
+url = window.location.href
+let params = (new URL(url)).searchParams
+
 document.getElementById("E").onclick = function() {
     // Get Selection
     sel = window.getSelection();
@@ -12,7 +15,7 @@ document.getElementById("E").onclick = function() {
     }
     // Colorize text
     document.execCommand("ForeColor", false, "white");
-    document.execCommand("HiliteColor", false, "green");
+    document.execCommand("HiliteColor", false, "#7bfc03");
     document.execCommand();
     // Set design mode to off
     document.designMode = "off";
@@ -32,7 +35,7 @@ document.getElementById("C").onclick = function() {
     }
     // Colorize text
     document.execCommand("ForeColor", false, "white");
-    document.execCommand("HiliteColor", false, "red");
+    document.execCommand("HiliteColor", false, "#fc3003");
     // Set design mode to off
     document.designMode = "off";
   }
@@ -51,7 +54,7 @@ document.getElementById("N").onclick = function() {
     }
     // Colorize text
     document.execCommand("ForeColor", false, "white");
-    document.execCommand("HiliteColor", false, "yellow");
+    document.execCommand("HiliteColor", false, "#fce303");
     // Set design mode to off
     document.designMode = "off";
   }
@@ -70,7 +73,7 @@ document.getElementById("U").onclick = function() {
     }
     // Colorize text
     document.execCommand("ForeColor", false, "white");
-    document.execCommand("HiliteColor", false, "blue");
+    document.execCommand("HiliteColor", false, "turquoise");
     // Set design mode to off
     document.designMode = "off";
   }
@@ -88,32 +91,24 @@ document.getElementById("X").onclick = function() {
 //     H.innerHTML = H.textContent
 //     alert("annotation saved!")
 // }
-function pushToServer() {
-  // var data = {
-  //   screening: '1',
-  //   assistance: 'wheelchair access',
-  //   guests: [
-  //       {
-  //           first: 'John',
-  //           last: 'Smith'
-  //       },
-  //       {
-  //           first: 'Dave',
-  //           last: 'Smith'
-  //       }
-  //   ]
-  // };
-  // $.ajax({
-  //   type: 'POST',
-  //   url: window.location.href,
-  //   data: JSON.stringify(response),
-  //   dataType: 'json',
-  //   contentType: 'application/json; charset=utf-8'
-  // }).done(function(msg) {
-  //   alert("Data Saved: " + msg);
-  // });
-  alert("annotation saved")
-}
+var $ = jQuery;
+$("#S").on("click", function() {
+  var data = {
+    id: params.get("id"),
+    sentence1: document.getElementById("P").innerHTML,
+    sentence2: document.getElementById("H").innerHTML,
+    username: params.get("user")
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/save',
+    data: JSON.stringify(data),
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8'
+  }).done(function(msg) {
+    alert("Data Saved: " + msg);
+  });
+})
 
 function confirmSubmission() {
   var response = confirm("Do you want to confirm your submission? You wont't be able to edit your annotations any more, after you submit.")
@@ -123,3 +118,4 @@ function confirmSubmission() {
     // do nothing
   }
 }
+
