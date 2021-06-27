@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}" />
+        <title>Title</title>
+    </head>
+    <body>
+
+        <header>
+            <h1 class="page_title">Please follow the instructions below</h1>
+        </header>
+        <div style="text-align:center; ">
+            <br>
+            <div class="section_title">
+                Instructions
+            </div>
+            <br>
+            <ol>
+                <li>Please select phrases from Premise(P) and Hypothesis(H)</li>
+                <br>
+                <li>Pick one label out of Entailment, Neutral, Contradiction and Unaligned.</li>
+                <br>
+                <li>To clear an annotation select it and press Clear</li>
+                <br>
+                <li>To clear all annotations press Clear All</li>
+                <br>
+                <li>To save an annotation click on save</li>
+                <br>
+                <li>To got to next sentence click on next, to go back click on prev</li>
+                <br>
+                <li>You can also use the navbar below to go directly to a page</li>
+                <br>
+            </ol>
+        </div>
+        <script src="{{ url_for('static',filename='js/index.js') }}"></script>
+    </body>
+</html>

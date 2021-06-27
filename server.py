@@ -1,69 +1,30 @@
 import sys
 import json
 import pandas as pd
+from backend.models import User
+# from flask_simple_captcha import CAPTCHA
 from flask import Flask, render_template, request, jsonify
+from backend.utils import rand_str, smart_int, read_data
 
-app=Flask(__name__)
+
+# CAPTCHA_CONFIG = {'SECRET_CSRF_KEY':rand_str(length=43)}
+app=Flask(__name__, static_url_path='/static')
+# CAPTCHA=CAPTCHA(config=config.CAPTCHA_CONFIG)
+# app=CAPTCHA.init_app(app)
 assert len(sys.argv)>1, "need to give filename of the json or csv"
 ANNOTATIONS = {}
-
-def smart_int(x):
-    if x is None:
-        return 0
-    elif x == "":
-        return 0
-    else: 
-        return int(x)
-# Utility functions
-def rand_str(length=16):
-    import random
-    from string import ascii_letters, digits
-    
-    op_str = ""
-    population = ascii_letters + digits
-    for i in range(length):
-        op_str += random.sample(population, 1)[0]
-
-    return op_str
-
-def read_data(path):
-    import json
-    from tqdm import tqdm
-    
-    '''To load list of dictionaries from jsonl file.'''
-    i = 1
-    examples = []
-    with open(path) as f:
-        lines = f.readlines()
-    for line in tqdm(lines, desc="reading json"):
-        tmp = json.loads(line)
-        examples.append({"SENTENCE_NUM":i, "PREMISE":tmp['sentence1'], "HYPOTHESIS":tmp['sentence2'], "PREV_NUM":i-1, "NEXT_NUM":i+1})
-        i += 1
-
-    return examples
-
 DATASET = read_data(sys.argv[1]) # global variable to store the dataset.
 
-def fill_template(html_template, **kwargs):
-    import os
-    import random
-    
-    assert isinstance(html_template, str), "the html template should be the file path."
-    os.makedirs("./templates/tmp", exist_ok=True)
-    html_template = open(html_template, "r")
-    for KEYWORD in kwargs:
-        html_template = html_template.replace(KEYWORD, kwargs[KEYWORD])    
-    op_str = rand_str()
-    fname = f"./templates/tmp/{op_str}.html" 
-    open(fname, "w").write(html_template)
-
-    return f"tmp/{op_str}.html"
 
 # APP functions
 @app.route('/',methods=['GET','POST'])
 def index():
     # return "Hello World"
     return render_template("index.html")
+
+@app.route('/instructions', methods=['GET','POST'])
+def instructions():
+    return render_template("instructions.html")
 
 @app.route('/thankyou',methods=['GET','POST'])
 def thankyou():
@@ -86,6 +47,8 @@ def annotation_page():
     if index == -1:
         context = {}
         context["USERNAME"] = username 
+        context["DATASET_LENGTH"] = 0
+
         return render_template("complete.html", **context)
     
     else:
@@ -95,8 +58,20 @@ def annotation_page():
             record["NEXT_NUM"] = -1
         record["PREV_NUM"] = max(record["PREV_NUM"], 1)
         record["USERNAME"] = username
+        record["DATASET_LENGTH"] = len(DATASET)
 
         return render_template("template.html", **record)
+
+@app.route('/register', methods=['POST','GET'])
+def register():
+    if request.method == 'GET':
+        render_template('register.html')
+
+    if request.method == 'POST':
+        data = request.get_json(force=True)  # parse as JSON
+        print(data)
+
+        return 'Success', 200
 
 @app.route('/save', methods=['POST'])
 def save_annotation():
@@ -104,7 +79,7 @@ def save_annotation():
     global ANNOTATIONS
 
     data = request.get_json(force=True)  # parse as JSON
-    index = int(data["id"])
+    index = smart_int(data["id"])
     username = data["username"]
     DATASET[index]["username"] = username
     DATASET[index]["sentence1"] = data["sentence1"]
@@ -118,4 +93,4 @@ def save_annotation():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=81)
+    app.run(host='0.0.0.0', use_reloader=True, port=81, debug=True)

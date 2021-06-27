@@ -5,19 +5,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>XNLI annotation platform</title>
     </head>
     <body>
 
         <header>
-            <h1 style="text-align: center;">Begin Annotation?</h1>
+            <br>
+            <h3 style="text-align: center; color: maroon;">Begin Annotation?</h3>
+            <br>
         </header>
-            <h3 style="text-align: center;">Enter your name below</h3>
-            <form style="text-align: center;" action="/annotate">
-                <label for="user">Name</label>
-                <input type="text" id="user" name="user"><br><br>
-                <input type="submit" value="Submit">
-              </form>
+        <div class="card-columns">
+            {%for i in range(0, 5)%}
+                <div class="card" style="width: 18rem; text-align: center; margin: 10px; background-color: #b2b2b2;">
+                    <br>
+                    <div style="margin-left: auto; margin-right: auto;">
+                        <img src="{{ url_for('static',filename='avatar.png') }}" alt="User Profile" width="150px">
+                    </div>
+                    <br>
+                    <div class="card-body">
+                    <h5 class="card-title" style="color: white; font-weight: bold;">Atharva Naik</h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    <button onclick="window.location.href='/annotate?id=1&user={{ USERNAME }}'" class="button">Annotate</button>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="card" style="width: 18rem; text-align: center; margin: 10px; background-color: #fff;">
+                <br>
+                <div class="card-body">
+                    <div style="margin-left: auto; margin-right: auto;">
+                        <img src="https://cdn.dribbble.com/users/2026891/screenshots/5620975/dribbble-2.png" alt="User Profile" width="250px">
+                    </div>
+                    <h5 class="card-title" style="color: #424242; font-weight: bold;">New User</h5>
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    <button onclick="window.location.href='/annotate?id=1&user={{ USERNAME }}'" class="button_dark">Create</button>
+                </div>
+            </div>       
+        </div>
+        <!-- <h3 style="text-align: center;">Enter your name below</h3>
+        <form style="text-align: center;" action="/annotate">
+            <label for="user">Name</label>
+            <input type="text" id="user" name="user"><br><br>
+            <input type="submit" value="Submit">
+        </form> -->
         <script src="{{ url_for('static',filename='js/index.js') }}"></script>
     </body>
 </html>
