@@ -12,10 +12,10 @@
     font-size: 27px;
   }
 
-  body {
+  /* body {
     background: rgb(224,225,239);
     background: linear-gradient(100deg, rgba(224,225,239,1) 7%, rgba(248,248,255,1) 45%, rgba(228,233,252,1) 90%);
-  }
+  } */
 
   .title_highlight {
     text-align: center;
@@ -243,4 +243,19 @@
     width: -webkit-calc(100% - 50px);
     width: calc(100% - 50px);
     height: 100%;
+  }
+
+  .table_cell {
+    border: 1px solid; 
+    padding-left: 5px; 
+    padding-right: 5px;
+  }
+
+  .table_label {
+    background-color: #57172a; 
+    color: #fff; 
+    font-weight: bold; 
+    font-family: monospace; 
+    text-align:center; 
+    border: 1px solid
   }

@@ -1,6 +1,16 @@
 url = window.location.href
 let params = (new URL(url)).searchParams
 
+function highlightSelected() {
+  sel = window.getSelection();
+  console.log(sel);
+}
+
+document.getElementById("P").onselect = function() {
+  sel = window.getSelection();
+  console.log(sel);
+}
+
   document.getElementById("E").onclick = function() {
     // Get Selection
     sel = window.getSelection();

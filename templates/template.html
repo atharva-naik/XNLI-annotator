@@ -4,10 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}">
+        <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/jupyter.css') }}" /> -->
         <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}" />
         <title>XNLI annotation platform</title>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script>
+        <!-- <script>
             var currP = {{ PREMISE }};
             var currH = {{ HYPOTHESIS }};
             // function to refresh the P and H (make sure the annotated versions are displayed) everytime, on reloading.
@@ -17,7 +18,7 @@
                 P.innerHTML = currP
                 H.innerHTML = currH
             }
-        </script>
+        </script> -->
     </head>
     <body>
         <header>
@@ -34,10 +35,16 @@
                     <!-- <textarea readonly class="sentence"> {{ PREMISE }} </textarea>
                     <br>
                     <textarea readonly class="sentence"> {{ HYPOTHESIS }} </textarea> -->
-                    <h4 style="margin-bottom: -40px; margin-top: 50px; font-family: monospace; font-weight: bold;"><mark style="background-color: #57172a; color:white">Premise</mark></h4>
-                    <h5 id="P" class="sentence"> {{ PREMISE }} </h5>
-                    <h4 style="margin-bottom: -40px; margin-top: 50px; font-family: monospace; font-weight: bold;"><mark style="background-color: #57172a; color:white">Hypothesis</mark></h4>
-                    <h5 id="H" class="sentence"> {{ HYPOTHESIS }} </h5>
+                    <!-- <div class="cell code_cell"> -->
+                        <h4 style="margin-bottom: -40px; margin-top: 50px; font-family: monospace; font-weight: bold;"><mark style="background-color: #57172a; color:white">Premise</mark></h4>
+                        <h5 id="P" class="sentence"> {{ PREMISE }} </h5>
+                        <!-- <textarea readonly>{{ PREMISE }}</textarea>
+                        <textarea readonly>{{ HYPOTHESIS }}</textarea> -->
+                        <!-- </div> -->
+                    <!-- <div class="cell code_cell"> -->
+                        <h4 style="margin-bottom: -40px; margin-top: 50px; font-family: monospace; font-weight: bold;"><mark style="background-color: #57172a; color:white">Hypothesis</mark></h4>
+                        <h5 id="H" class="sentence"> {{ HYPOTHESIS }} </h5>
+                    <!-- </div> -->
                 </div>
                 <div style="text-align: center;">
                     <button id="E" class="button buttonE">Entail</button>
@@ -86,29 +93,29 @@
                         <br>
                         <table style="margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px">
                             <tr>
-                                <th style="background-color: #57172a; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">Label</td>
-                                <th style="background-color: #57172a; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">Premise</td>
-                                <th style="background-color: #57172a; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">Hypothesis</td>
+                                <th class="table_label">Label</td>
+                                <th class="table_label">Premise</td>
+                                <th class="table_label">Hypothesis</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #7bfc03; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">E</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;">this is a phrase</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;">this is the matched phrase</td>
+                                <td class="table_cell">this is a phrase</td>
+                                <td class="table_cell">this is the matched phrase</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #fc3003; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">C</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;">this is a longer phrase</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;">this is another longer phrase</td>
+                                <td class="table_cell">this is a longer phrase</td>
+                                <td class="table_cell">this is another longer phrase</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #fce303; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">N</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;"></td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;"></td>
+                                <td class="table_cell"></td>
+                                <td class="table_cell"></td>
                             </tr>
                             <tr>
                                 <td style="background-color: turquoise; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">U</td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;"></td>
-                                <td style="border: 1px solid; padding-left: 5px; padding-right: 5px;"></td>
+                                <td class="table_cell"></td>
+                                <td class="table_cell"></td>
                             </tr>
                         </table>
                         <h5 style="text-align:center">E: Entailment, C: Contradiction, <br> N: Neutral, U: Unaligned</h5>
