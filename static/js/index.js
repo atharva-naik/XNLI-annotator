@@ -1,16 +1,6 @@
 url = window.location.href
 let params = (new URL(url)).searchParams
 
-function highlightSelected() {
-  sel = window.getSelection();
-  console.log(sel);
-}
-
-document.getElementById("P").onselect = function() {
-  sel = window.getSelection();
-  console.log(sel);
-}
-
   document.getElementById("E").onclick = function() {
     // Get Selection
     sel = window.getSelection();
@@ -24,11 +14,12 @@ document.getElementById("P").onselect = function() {
       sel.addRange(range);
     }
     // Colorize text if it belongs to P or H or "FONT" tag
-    divId = sel.getRangeAt(0).startContainer.parentNode.id;
-    tagName = sel.getRangeAt(0).startContainer.parentNode.tagName; // if font and not div
+    divId = range.startContainer.parentNode.id;
+    tagName = range.startContainer.parentNode.tagName; // if font and not div
     if (divId == "P" || divId == "H" || tagName == "FONT") {
       document.execCommand("ForeColor", false, "white");
       document.execCommand("HiliteColor", false, "#7bfc03");
+      console.log("start=",range.startOffset,"end=",range.endOffset);
     }
     // Set design mode to off
     document.designMode = "off";
@@ -186,3 +177,4 @@ $("#S").on("click", function() {
       rightColumn.id = "rightcolumn_hide"
     }
   }
+
