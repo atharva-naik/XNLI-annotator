@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import json
 from numpy import inexact
@@ -128,4 +129,4 @@ def save_annotation():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', use_reloader=True, port=81, debug=True)
+    app.run(host='0.0.0.0', use_reloader=True, port=11200, debug=True)
