@@ -1,4 +1,6 @@
 flask
 numpy
 pandas
+passlib
+flask-wtf
 flask-simple-captcha

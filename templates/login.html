@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
   <title>Simple Sign up from</title>
-<head>
+  <head>
     <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
 </head>
   <body>
-    <form action="{{ url_for('register') }}" method="post">
-      <h1>Register User</h1>
+    <form action="{{ url_for('login') }}" method="post">
+      <h1>Welcome back, {{ USERNAME }}</h1>
       <div class="icon">
         <img src="{{ url_for('static',filename='avatar.png') }}" alt="USER" height="100" width="100">
       </div>
       <div class="formcontainer">
       <div class="container">
-        <label for="uname"><strong>Username</strong></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <label for="email"><strong>E-mail</strong></label>
-        <input type="text" placeholder="Enter E-mail" name="email" required>
         <label for="psw"><strong>Password</strong></label>
         <input type="password" placeholder="Enter Password" name="password" required>
-        <label for="psw"><strong>Confirm Password</strong></label>
-        <input type="password" placeholder="Confirm Password" name="repeat_password" required>
       </div>
-      <button type="submit"><strong>Submit</strong></button>
-      <!-- <div class="container" style="background-color: #eee">
-        <label style="padding-left: 15px">
+      <button type="submit"><strong>Login</strong></button>
+      <div class="container">
+        <!-- <label style="padding-left: 15px">
         <input type="checkbox"  checked="checked" name="remember"> Remember me
-        </label>
-        <span class="psw"><a href="#">Forgot password?</a></span>
-      </div> -->
+        </label> -->
+        <div class="psw" style="text-align:center; font-family: sans-serif;">Don't have an account? <a href="/register">Register here</a></div>
+      </div>
     </form>
   </body>
 </html>

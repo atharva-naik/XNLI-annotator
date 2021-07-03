@@ -1,5 +1,16 @@
 url = window.location.href
 let params = (new URL(url)).searchParams
+var hexDigits = new Array
+        ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"); 
+
+function hex(x) {
+  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+}
+
+function rgb2hex(rgb) {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
 
   document.getElementById("E").onclick = function() {
     // Get Selection
@@ -19,7 +30,7 @@ let params = (new URL(url)).searchParams
     if (divId == "P" || divId == "H" || tagName == "FONT") {
       document.execCommand("ForeColor", false, "white");
       document.execCommand("HiliteColor", false, "#7bfc03");
-      console.log("start=",range.startOffset,"end=",range.endOffset);
+      // console.log("start=",range.startOffset,"end=",range.endOffset);
     }
     // Set design mode to off
     document.designMode = "off";
@@ -89,7 +100,7 @@ let params = (new URL(url)).searchParams
     tagName = sel.getRangeAt(0).startContainer.parentNode.tagName; // if font and not div
     if (divId == "P" || divId == "H" || tagName == "FONT") {
       document.execCommand("ForeColor", false, "white");
-      document.execCommand("HiliteColor", false, "turquoise");
+      document.execCommand("HiliteColor", false, "#30d5c8");
     }
     // Set design mode to off
     document.designMode = "off";
@@ -133,11 +144,70 @@ let params = (new URL(url)).searchParams
 // }
 var $ = jQuery;
 $("#S").on("click", function() {
+  // sentence1: document.getElementById("P").innerHTML,
+  // sentence2: document.getElementById("H").innerHTML,
+  var P = document.getElementById("P");
+  var H = document.getElementById("H");
+  var FP = P.getElementsByTagName('font');
+  var FH = H.getElementsByTagName('font');
+  var EP = ""; var CP = ""; var NP = ""; var UP = "";
+  var EH = ""; var CH = ""; var NH = ""; var UH = "";
+  for (phrase of FP) {
+    if (rgb2hex(phrase.style.backgroundColor) == "#7bfc03") {
+      // deal with entailment cases.
+      EP += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#fc3003") {
+      // deal with contradiction cases.
+      CP += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#fce303") {
+      // deal with neutral cases.
+      NP += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#30d5c8") {
+      // deal with unaligned premise.
+      UP += phrase.innerText+"<SEP> ";
+    }
+  }
+  for (phrase of FH) {
+    if (rgb2hex(phrase.style.backgroundColor) == "#7bfc03") {
+      // deal with entailment cases.
+      EH += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#fc3003") {
+      // deal with contradiction cases.
+      CH += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#fce303") {
+      // deal with neutral cases.
+      NH += phrase.innerText+"<SEP> ";
+    }
+    else if (rgb2hex(phrase.style.backgroundColor) == "#30d5c8") {
+      // deal with unaligned premise.
+      UH += phrase.innerText+"<SEP> ";
+    }
+  }
+  document.getElementById("EP").innerText = EP;
+  document.getElementById("CP").innerText = CP;
+  document.getElementById("NP").innerText = NP;
+  document.getElementById("UP").innerText = UP;
+  document.getElementById("EH").innerText = EH;
+  document.getElementById("CH").innerText = CH;
+  document.getElementById("NH").innerText = NH;
+  document.getElementById("UH").innerText = UH;
+
   var data = {
     id: params.get("id"),
-    sentence1: document.getElementById("P").innerHTML,
-    sentence2: document.getElementById("H").innerHTML,
-    username: params.get("user")
+    username: params.get("user"),
+    EP: document.getElementById("EP").innerText,
+    CP: document.getElementById("CP").innerText,
+    NP: document.getElementById("NP").innerText,
+    UP: document.getElementById("UP").innerText,
+    EH: document.getElementById("EH").innerText,
+    CH: document.getElementById("CH").innerText,
+    NH: document.getElementById("NH").innerText,
+    UH: document.getElementById("UH").innerText
   };
   $.ajax({
     type: 'POST',

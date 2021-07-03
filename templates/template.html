@@ -59,13 +59,13 @@
                     <button class="button" onclick="window.location.href='/annotate?id={{ NEXT_NUM }}&user={{ USERNAME }}'">Next →</button>
                     <br>
                     <br><br>
-                    {%for i in range(0, DATASET_LENGTH)%}
+                    <!-- {%for i in range(0, DATASET_LENGTH)%}
                         {%if i+1 == SENTENCE_NUM %}
                             <ul><button id="X" class="button higlighted" onclick="window.location.href='/annotate?id={{ i+1 }}&user={{ USERNAME }}'">{{ i+1 }}</button></ul>
                         {%else%}
                             <ul><button id="X" class="button" onclick="window.location.href='/annotate?id={{ i+1 }}&user={{ USERNAME }}'">{{ i+1 }}</button></ul>
                         {%endif%}
-                    {%endfor%}
+                    {%endfor%} -->
                     <h3 class="footer">Page {{ SENTENCE_NUM }}</h5>
                 </div>
             </div>
@@ -99,23 +99,23 @@
                             </tr>
                             <tr>
                                 <td style="background-color: #7bfc03; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">E</td>
-                                <td class="table_cell" id="EP">this is a phrase</td>
-                                <td class="table_cell" id="EH">this is the matched phrase</td>
+                                <td class="table_cell" id="EP">{{ EP }}</td>
+                                <td class="table_cell" id="EH">{{ EH }}</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #fc3003; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">C</td>
-                                <td class="table_cell" id="CP">this is a longer phrase</td>
-                                <td class="table_cell" id="CH">this is another longer phrase</td>
+                                <td class="table_cell" id="CP">{{ CP }}</td>
+                                <td class="table_cell" id="CH">{{ CH }}</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #fce303; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">N</td>
-                                <td class="table_cell" id="NP"></td>
-                                <td class="table_cell" id="NH"></td>
+                                <td class="table_cell" id="NP">{{ NP }}</td>
+                                <td class="table_cell" id="NH">{{ NH }}</td>
                             </tr>
                             <tr>
                                 <td style="background-color: turquoise; color: #fff; font-weight: bold; font-family: monospace; text-align:center; border: 1px solid">U</td>
-                                <td class="table_cell" id="UP"></td>
-                                <td class="table_cell" id="UH"></td>
+                                <td class="table_cell" id="UP">{{ UP }}</td>
+                                <td class="table_cell" id="UH">{{ UH }}</td>
                             </tr>
                         </table>
                         <h5 style="text-align:center">E: Entailment, C: Contradiction, <br> N: Neutral, U: Unaligned</h5>

@@ -1,2 +1,0 @@
-SENTENCE_NUM,PREMISE,HYPOTHESIS,PREV_NUM,NEXT_NUM,username,sentence1,sentence2,USERNAME
-3,one two three four five six.,one two three four.,2,4,Atharva,"<font color=""#ffffff"" style=""background-color: green;""> this is the seco</font>nd p<font color=""#ffffff"" style=""background-color: yellow;"">remise </font>","<font color=""#ffffff"" style=""background-color: yellow;""> th<font style="""">is is </font></font><font color=""#ffffff"" style=""background-color: red;"">the second hyp</font>othesis. ",Atharva

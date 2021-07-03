@@ -1,4 +1,4 @@
-{"sentence1": "this is the premise.", "sentence2": "this is the hypothesis."}
+{"sentence1": "this is the premise, this is not a hypothesis.", "sentence2": "this is the hypothesis, but it could also be a premise."}
 {"sentence1": "this is the second premise", "sentence2": "this is the second hypothesis."}
 {"sentence1": "one two three four five six.", "sentence2": "one two three four."}
 {"sentence1": "this is the second premise", "sentence2": "this is the second hypothesis."}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+        <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}">
         <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -13,11 +13,11 @@
 
         <header>
             <br>
-            <h3 style="text-align: center; color: maroon;">Begin Annotation?</h3>
+            <h3 style="text-align: center; color: maroon;">Login to begin annotation</h3>
             <br>
         </header>
         <div class="card-columns">
-            {%for i in range(0, 5)%}
+            {%for user in USERS%}
                 <div class="card" style="width: 18rem; text-align: center; margin: 10px; background-color: #b2b2b2;">
                     <br>
                     <div style="margin-left: auto; margin-right: auto;">
@@ -25,9 +25,9 @@
                     </div>
                     <br>
                     <div class="card-body">
-                    <h5 class="card-title" style="color: white; font-weight: bold;">Atharva Naik</h5>
+                    <h5 class="card-title" style="color: white; font-weight: bold;">Atharva</h5>
                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    <button onclick="window.location.href='/annotate?id=1&user={{ USERNAME }}'" class="button">Annotate</button>
+                    <button onclick="window.location.href='/login?user={{ user }}'" class="button">Annotate</button>
                     </div>
                 </div>
             {% endfor %}
@@ -39,7 +39,7 @@
                     </div>
                     <h5 class="card-title" style="color: #424242; font-weight: bold;">New User</h5>
                   <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    <button onclick="window.location.href='/annotate?id=1&user={{ USERNAME }}'" class="button_dark">Create</button>
+                    <button onclick="window.location.href='/register'" class="button_dark">Create</button>
                 </div>
             </div>       
         </div>
