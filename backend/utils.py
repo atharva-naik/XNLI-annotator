@@ -28,7 +28,13 @@ def read_data(path):
         lines = f.readlines()
     for line in tqdm(lines, desc="reading json"):
         tmp = json.loads(line)
-        examples.append({"SENTENCE_NUM":i, "PREMISE":tmp['sentence1'], "HYPOTHESIS":tmp['sentence2'], "PREV_NUM":i-1, "NEXT_NUM":i+1})
+        examples.append({"SENTENCE_NUM":i, 
+                         "PREMISE":tmp['sentence1'], 
+                         "HYPOTHESIS":tmp['sentence2'], 
+                         "PREV_NUM":i-1, 
+                         "NEXT_NUM":i+1,
+                         "LABEL":tmp['LABEL'],
+                         "ID":tmp["ID"]})
         i += 1
 
     return examples

@@ -1,0 +1,100 @@
+{"ID": 2947, "sentence1": "Two men stand in the road, it almost appears to be some sort of movie set on a sunny day in California.", "sentence2": "Some people standing", "LABEL": "entailment"}
+{"ID": 880, "sentence1": "A brown dog jumps over an obstacle.", "sentence2": "The dog is in a pool.", "LABEL": "contradiction"}
+{"ID": 475, "sentence1": "A group of people are in a rowboat in the ocean surrounded by seagulls.", "sentence2": "A group of people are inside watching a hockey game.", "LABEL": "contradiction"}
+{"ID": 9380, "sentence1": "A man sitting on an elephant with a riding seat is talking to a female tourist.", "sentence2": "A person riding a large animal.", "LABEL": "entailment"}
+{"ID": 5037, "sentence1": "Walkers on a concrete boardwalk under a blue sky.", "sentence2": "walkers under a blue sky near the beach", "LABEL": "neutral"}
+{"ID": 270, "sentence1": "A frowning old man in a military cap and a civilian suit stands amongst a crowd of people outdoors carrying signs and balloons.", "sentence2": "An angry military veteran watches as people protest the war.", "LABEL": "neutral"}
+{"ID": 5983, "sentence1": "Young Asian girl is sitting on the ground in rubble.", "sentence2": "The young girl is walking among the tulips.", "LABEL": "contradiction"}
+{"ID": 3137, "sentence1": "A young man with glasses and his companion are attempting to do laundry in a public place.", "sentence2": "Nobody has glasses on", "LABEL": "contradiction"}
+{"ID": 4172, "sentence1": "A sitting man is holding a partially carved stone in front a partially painted wall.", "sentence2": "A man is holding a stone in front of a wall.", "LABEL": "entailment"}
+{"ID": 3467, "sentence1": "A man wearing a welding mask working on a duct.", "sentence2": "The man is working underneath a vehicle.", "LABEL": "contradiction"}
+{"ID": 6517, "sentence1": "A young woman in tight pants talks to a man in the street.", "sentence2": "A young gal in snug pants chats with a guy in the road.", "LABEL": "entailment"}
+{"ID": 2153, "sentence1": "Two construction workers are working in front of a wall which has a bunch of names carved into it.", "sentence2": "The men are playing wind instruments.", "LABEL": "contradiction"}
+{"ID": 7128, "sentence1": "Children are petting small turtles in the grass.", "sentence2": "The children are playing with turtles.", "LABEL": "entailment"}
+{"ID": 8251, "sentence1": "A few people are sitting inside of a building with lots of photography on the walls.", "sentence2": "The people are indoors.", "LABEL": "entailment"}
+{"ID": 3855, "sentence1": "An oriental woman cleaning wood outside from a bucket.", "sentence2": "A woman is cleaning wood.", "LABEL": "entailment"}
+{"ID": 4074, "sentence1": "A man wearing a yellow motorcycle jacket on a motorcycle in midair with a man watching in the background", "sentence2": "A man rides a motorcycle.", "LABEL": "entailment"}
+{"ID": 4642, "sentence1": "A woman carrying a large package on her head walks in front of a building plastered with Portuguese posters advertising a concert.", "sentence2": "A Brazilian woman carries groceries home.", "LABEL": "neutral"}
+{"ID": 4516, "sentence1": "A woman in a green flowered dress is holding a container of yarn animals.", "sentence2": "A lady in a dress has a container of yarn toys.", "LABEL": "entailment"}
+{"ID": 6003, "sentence1": "A woman poses for a picture with a child.", "sentence2": "A child poses for the camera with their mother.", "LABEL": "entailment"}
+{"ID": 4730, "sentence1": "A man wearing black pants and a helmet is riding a brown horse.", "sentence2": "A man is riding a mammoth.", "LABEL": "contradiction"}
+{"ID": 7145, "sentence1": "three dogs run through the grass.", "sentence2": "Three dogs run through the dead, brown grass.", "LABEL": "neutral"}
+{"ID": 7533, "sentence1": "Three people are making transactions at an automated teller machine.", "sentence2": "There are people watching TV inside.", "LABEL": "contradiction"}
+{"ID": 2831, "sentence1": "Two young musicians play from a stage.", "sentence2": "The stage is empty", "LABEL": "contradiction"}
+{"ID": 7710, "sentence1": "A woman in a white tennis outfit is jumping up to hit the ball.", "sentence2": "white outfit women playing tennis", "LABEL": "entailment"}
+{"ID": 9182, "sentence1": "The dog's mouth is open like he is yawning.", "sentence2": "a dog is yawning because he is tired from a walk", "LABEL": "neutral"}
+{"ID": 2015, "sentence1": "A man is laid back in front of a tv.", "sentence2": "he is watching the news", "LABEL": "neutral"}
+{"ID": 2333, "sentence1": "A female guitarist is playing on stage.", "sentence2": "A woman is playing her instrument.", "LABEL": "entailment"}
+{"ID": 7647, "sentence1": "A bearded man wears a roughly sewn hooded costume emblazoned with images of Spiderman.", "sentence2": "A man dressing for a show", "LABEL": "neutral"}
+{"ID": 9669, "sentence1": "People landscaping and gardening the areas around the walkway.", "sentence2": "People are caring for their lawns", "LABEL": "entailment"}
+{"ID": 9112, "sentence1": "A woman wearing glasses and a brown beanie next to a girl with long brown hair holding a book.", "sentence2": "A woman is wearing glasses and a light brown beanie.", "LABEL": "neutral"}
+{"ID": 9526, "sentence1": "Several women in headscarves are standing in a cobbled courtyard.", "sentence2": "Several women jump in a pool and splash each other.", "LABEL": "contradiction"}
+{"ID": 2516, "sentence1": "A white man taking a photo in front of water.", "sentence2": "A man is using the restroom.", "LABEL": "contradiction"}
+{"ID": 3635, "sentence1": "Children play in a shallow pool next to a large image of a girl's face.", "sentence2": "The children are in a very deep pool.", "LABEL": "contradiction"}
+{"ID": 2317, "sentence1": "Three men dressed in white shirts and white hats, (two with baseball caps, the leader with a white construction helmet), pounding sticks on steel and plastic drums.", "sentence2": "Three men pound on some drums", "LABEL": "entailment"}
+{"ID": 1857, "sentence1": "A fat woman wearing faint blue top is blowing soap bubble.", "sentence2": "A fat woman is wearing a shirt.", "LABEL": "entailment"}
+{"ID": 4915, "sentence1": "A group of people are ice skating in a big city.", "sentence2": "The people are sleeping in the train station.", "LABEL": "contradiction"}
+{"ID": 4771, "sentence1": "A little boy punching out flashcards from the cardboard they came in.", "sentence2": "A boy holds some flashcards in his hands", "LABEL": "entailment"}
+{"ID": 6712, "sentence1": "A man, with a blue wrapping around his foot, is about to kick another man, with a red cloth hanging from his belt, in the head.", "sentence2": "a kitten drinks milk", "LABEL": "contradiction"}
+{"ID": 3438, "sentence1": "A group of people, one of which is a woman with a large white and colorful purse, wait to board a large white and blue bus.", "sentence2": "A dog is driving the bus.", "LABEL": "contradiction"}
+{"ID": 2251, "sentence1": "People shopping for vegetables at an outdoor market.", "sentence2": "People shopping for veggies and fruit at a market.", "LABEL": "entailment"}
+{"ID": 4414, "sentence1": "A boy in a yellow t-shirt and pink sweater talks on a cellphone while riding a horse through a crowd of people who are looking on.", "sentence2": "A boy has a light yellow t-shirt and pink sweater.", "LABEL": "neutral"}
+{"ID": 4643, "sentence1": "A woman carrying a large package on her head walks in front of a building plastered with Portuguese posters advertising a concert.", "sentence2": "A woman walks outdoors.", "LABEL": "entailment"}
+{"ID": 3160, "sentence1": "The hockey players and referee are preparing for a face-off.", "sentence2": "The referee and players are getting ready to face-off.", "LABEL": "entailment"}
+{"ID": 5526, "sentence1": "Several men helping each other pull in a fishing net.", "sentence2": "There is one man holding the net.", "LABEL": "contradiction"}
+{"ID": 6570, "sentence1": "Three people are riding a carriage pulled by four horses.", "sentence2": "The oxen are pulling the carriage.", "LABEL": "contradiction"}
+{"ID": 4792, "sentence1": "A man with a beard is talking on the cellphone and standing next to someone who is lying down on the street.", "sentence2": "A man is prone on the street while another man stands next to him.", "LABEL": "entailment"}
+{"ID": 6331, "sentence1": "A little girl in a colorful shirt holding a flower.", "sentence2": "The girl is holding a flower", "LABEL": "entailment"}
+{"ID": 6179, "sentence1": "Two men in hard hats look at a building while on the side of a street.", "sentence2": "2 male humans are working construction.", "LABEL": "neutral"}
+{"ID": 9479, "sentence1": "Swimming in the wide blue ocean.", "sentence2": "The ocean swims in the blue wideness.", "LABEL": "contradiction"}
+{"ID": 4702, "sentence1": "A man is ducking down between the red tulips in a flower field.", "sentence2": "The man is outside.", "LABEL": "entailment"}
+{"ID": 8661, "sentence1": "A older man with gray hair wearing a gray suit next to a green and yellow taxi.", "sentence2": "A older woman sits in a green and yellow taxi.", "LABEL": "contradiction"}
+{"ID": 6756, "sentence1": "A couple is taking a break from bicycling.", "sentence2": "a couple are racing each other on their bikes.", "LABEL": "contradiction"}
+{"ID": 5278, "sentence1": "Two children are sitting on a white blanket, while the other child is sitting in the dirt.", "sentence2": "Two children are having fun together", "LABEL": "neutral"}
+{"ID": 6572, "sentence1": "Black and yellow teams are trying to get the basketball in the goal.", "sentence2": "Red, and green teams are trying to get a soccer ball into a goal.", "LABEL": "contradiction"}
+{"ID": 8513, "sentence1": "Two basketball players on opposing teams, one in white, the other in red, are mid-game, running down the court, white-uniform player with ball-in-hand.", "sentence2": "A group of people are playing basketball.", "LABEL": "entailment"}
+{"ID": 3749, "sentence1": "Woman is looking something.", "sentence2": "A woman is looking", "LABEL": "entailment"}
+{"ID": 3998, "sentence1": "A man in a gray coat is walking on a fallen tree trunk in a forest.", "sentence2": "Two girls play tag in a forest.", "LABEL": "contradiction"}
+{"ID": 9492, "sentence1": "A girl with a blue shirt and a girl with a striped shirt stand next to a girl with a green shirt sitting in a chair.", "sentence2": "Two girls are standing next to a girl who is sitting.", "LABEL": "entailment"}
+{"ID": 2858, "sentence1": "Man and woman rowing on surfboards third rower in distance.", "sentence2": "Couple go out for their first surfing session as a couple.", "LABEL": "neutral"}
+{"ID": 8360, "sentence1": "A woman in a gray sweater talking to another woman in a black jacket.", "sentence2": "A lady wearing gray speaks to a lady in black.", "LABEL": "entailment"}
+{"ID": 6277, "sentence1": "Two men, one in a blue shirt and one in a green shirt analyze a piece of paper in the middle of a workshop area.", "sentence2": "The coworkers are discussing a work related paper in their shop.", "LABEL": "neutral"}
+{"ID": 6987, "sentence1": "A man in a suit with gold buttons and a name tag gestures with his hands as he speaks to another man in a dress shirt who is holding a beverage in a glass.", "sentence2": "A man in a suit with real gold buttons and a name tag gestures with his hands", "LABEL": "neutral"}
+{"ID": 4899, "sentence1": "Two identical brown dogs side by side holding something white in both their mouths.", "sentence2": "Two litter brothers fight over a bone.", "LABEL": "neutral"}
+{"ID": 6932, "sentence1": "An old woman and a young man examine their bingo cards.", "sentence2": "A woman and man are checking their bingo cards to see if they won", "LABEL": "neutral"}
+{"ID": 2189, "sentence1": "A smiling woman and man are seated in front of a microphone in a music studio.", "sentence2": "The woman is frowning.", "LABEL": "contradiction"}
+{"ID": 1315, "sentence1": "A girl crosscountry skis.", "sentence2": "A girl is wearing a cap.", "LABEL": "neutral"}
+{"ID": 2920, "sentence1": "A snowboarder making a big jump doing a trick on a high mountain.", "sentence2": "A snowboarder lands a trick during a competition.", "LABEL": "neutral"}
+{"ID": 322, "sentence1": "A softball player throws the ball to her teammate.", "sentence2": "Two softball players are sitting on a bench.", "LABEL": "contradiction"}
+{"ID": 132, "sentence1": "A guy riding a motorcycle near junk cars", "sentence2": "The man is test driving a motorcycle to decide whether or not he will buy it.", "LABEL": "neutral"}
+{"ID": 2365, "sentence1": "A barefoot child climbs at the jungle gym.", "sentence2": "A child is playing outside on a jungle gym.", "LABEL": "entailment"}
+{"ID": 3608, "sentence1": "A man and woman talk to another woman, all looking concerned, in a room being decorated with streamers and balloons.", "sentence2": "Some people are happy to be throwing a party.", "LABEL": "contradiction"}
+{"ID": 451, "sentence1": "A group of four children pose on a muddy beach, smiling and making faces.", "sentence2": "Four kids pose on a beach.", "LABEL": "entailment"}
+{"ID": 4538, "sentence1": "Two men and two women in jackets walk down a large city street.", "sentence2": "There are people outside.", "LABEL": "entailment"}
+{"ID": 9490, "sentence1": "Three children in a black dog kennel.", "sentence2": "Kids are in a cage.", "LABEL": "neutral"}
+{"ID": 2649, "sentence1": "A man with a tan jacket with a full grocery bag is crossing the street.", "sentence2": "The man just went shopping at the grocery store.", "LABEL": "neutral"}
+{"ID": 3351, "sentence1": "A man in a blue jacket standing at a table with his back to the camera.", "sentence2": "the child was 18 years old", "LABEL": "contradiction"}
+{"ID": 2040, "sentence1": "Woman in a blue dress and carrying a black purse, rides a scooter down the street.", "sentence2": "the girl is riding down a dirt street", "LABEL": "neutral"}
+{"ID": 990, "sentence1": "Three young boys enjoying a day at the beach.", "sentence2": "The boys are in the beach", "LABEL": "entailment"}
+{"ID": 5916, "sentence1": "A person sweeping stairs in a park.", "sentence2": "A groundskeeper at a park", "LABEL": "neutral"}
+{"ID": 2663, "sentence1": "Men are playing rugby while covered in mud.", "sentence2": "There is mud on the rugby players.", "LABEL": "entailment"}
+{"ID": 120, "sentence1": "Two teenage girls conversing next to lockers.", "sentence2": "Girls talking about their problems next to lockers.", "LABEL": "neutral"}
+{"ID": 613, "sentence1": "Man and woman eating a hotdog.", "sentence2": "A man and woman are eating a hotdog at a baseball game.", "LABEL": "neutral"}
+{"ID": 8342, "sentence1": "A little girl in a pink dress crying.", "sentence2": "A young girl is crying for more attention.", "LABEL": "neutral"}
+{"ID": 4249, "sentence1": "A young black man wearing a dark leather jacket and gloves is standing on a lit stage, looking down.", "sentence2": "A black man is performing in a play.", "LABEL": "neutral"}
+{"ID": 945, "sentence1": "A tree worker with a hard hat is cutting down a branch.", "sentence2": "The tree appears to be dead.", "LABEL": "neutral"}
+{"ID": 9126, "sentence1": "A man is spinning a little girl in the air above his head.", "sentence2": "A man is carrying a little girl off the ground.", "LABEL": "entailment"}
+{"ID": 4039, "sentence1": "Children receiving places at an award ceremony.", "sentence2": "An award ceremony is occurring.", "LABEL": "entailment"}
+{"ID": 1252, "sentence1": "A man in aerodynamic gear riding a bicycle down a road around a sharp curve.", "sentence2": "the man is riding outside", "LABEL": "entailment"}
+{"ID": 9640, "sentence1": "A child being watched while getting something out of a tank.", "sentence2": "The tank is filled with water.", "LABEL": "neutral"}
+{"ID": 5810, "sentence1": "A small child is giving heavy metal signs", "sentence2": "A child pretending his hand is a bull.", "LABEL": "contradiction"}
+{"ID": 1860, "sentence1": "A man is swimming with a little girl wearing a pink life jacket in an indoor pool", "sentence2": "A man is swimming in an indoor pool.", "LABEL": "entailment"}
+{"ID": 6264, "sentence1": "A man playing fetch with two brown dogs.", "sentence2": "The dogs are asleep.", "LABEL": "contradiction"}
+{"ID": 2170, "sentence1": "A person lies in a grassy area near a building.", "sentence2": "The person is jumping on a trampoline.", "LABEL": "contradiction"}
+{"ID": 8389, "sentence1": "A couple opening up a new electronically mixer.", "sentence2": "The couple purchased a used mixer", "LABEL": "contradiction"}
+{"ID": 7183, "sentence1": "The black woman is laying out literature.", "sentence2": "The black woman is toasting marshmallows on a barbecue grill.", "LABEL": "contradiction"}
+{"ID": 3490, "sentence1": "Man straining to climb cliff face.", "sentence2": "Man climbing a cliff.", "LABEL": "entailment"}
+{"ID": 7608, "sentence1": "A surfer is performing a jumping stunt in the ocean.", "sentence2": "A daring man in the surf.", "LABEL": "neutral"}
+{"ID": 5837, "sentence1": "Two cars are being driven in a car race.", "sentence2": "A Bugatti and a Lambourgini compete in a road race.", "LABEL": "neutral"}
+{"ID": 533, "sentence1": "A young man waring black and carrying a skateboard looks at an outdoor skateboard park.", "sentence2": "A girl with a ponytail is riding a bike at a park.", "LABEL": "contradiction"}
+{"ID": 6167, "sentence1": "An elderly couple in heavy coats are looking at black and white photos displayed on a wall.", "sentence2": "Octogenarians admiring the old photographs that decorated th wall.", "LABEL": "entailment"}

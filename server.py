@@ -33,33 +33,66 @@ def instructions():
 def thankyou():
     return render_template("thankyou.html")
 
+@app.route('/complete', methods=['GET','POST'])
+def complete():
+    username = request.args.get('user', default="Anonymous", type=str)
+    context = {}
+    context["USERNAME"] = username 
+    context["DATASET_LENGTH"] = 0
+
+    return render_template("complete.html", **context)
+
+@app.route('/dashboard', methods=['GET','POST'])
+def dahsboard():
+    global users
+    global DATASET
+
+    username = request.args.get('user', default="Anonymous", type=str)
+    context = {}
+    context["USERNAME"] = username
+    context["NUM_USERS"] = len(users)
+    user = users.get_user(username)
+    all = DATASET
+    data = user.annotations.to_dict("records")
+    for i in range(len(all)):
+    # for i in range(len(data)):
+        for j in ["EP","EH","CH","CP","UP","UH","NH","NP"]:
+            all[i]["status"] = "pending"
+            try:
+                all[i][j] = data[i][j].replace("<SEP>","▉")[:-1]
+                all[i]["status"] = "complete"
+            except IndexError:
+                all[i][j] = ""
+    print(all)
+    context["data"] = all
+    context["NUM_SENTENCES"] = len(all)
+    context["NUM_ANNOTATED"] = len(data)
+    context["INTERANNOTATOR_AGREEMENT"] = "NA"
+
+    return render_template("dashboard.html", **context)
+
 @app.route('/annotate', methods=['GET','POST'])
 def annotation_page():
     global users
     global DATASET
-    index = request.args.get('id', default=1, type=int)
+    id = request.args.get('id', default=1, type=int) 
+    # 1 for the first sentence, 2 for the second ... N for the Nth, len(DATASET) for the last one.
     username = request.args.get('user', default="Anonymous", type=str)
-    
-    if index == -1:
-        context = {}
-        context["USERNAME"] = username 
-        context["DATASET_LENGTH"] = 0
-
-        return render_template("complete.html", **context)
-    
-    else:
-        index -= 1
-        record = DATASET[index]
-        if record["NEXT_NUM"] == len(DATASET)+1:
-            record["NEXT_NUM"] = -1
-        record["PREV_NUM"] = max(record["PREV_NUM"], 1)
-        record["USERNAME"] = username
-        record["DATASET_LENGTH"] = len(DATASET)
-        user = users.get_user(username)
-        annotation = user.fetch_annotation(id=index+1)
-        record.update(annotation)
-        # print(record)
-        return render_template("template.html", **record)
+    record = DATASET[id-1]
+    record["NEXT_URL"] = f'/annotate?id={id+1}&user={username}'
+    record["PREV_URL"] = f'/annotate?id={id-1}&user={username}'
+    if id == len(DATASET):
+        record["NEXT_URL"] = f'/complete?user={username}'
+        print(record["NEXT_URL"])
+    elif id == 1:
+        record["PREV_URL"] = f'/annotate?id={id}&user={username}'
+    user = users.get_user(username)
+    record["USERNAME"] = username
+    record["DATASET_LENGTH"] = len(DATASET)
+    annotation = user.fetch_annotation(id)
+    record.update(annotation)
+    # print(record)
+    return render_template("template.html", **record)
 
 @app.route('/register', methods=['POST','GET'])
 def register():
@@ -112,8 +145,10 @@ def save_annotation():
     username = data["username"]
     user = users.get_user(username)
     if user.fetch_annotation(id=data["id"]) == "":
+        print("record doesn't exist, so adding it")
         user.add_annotation(data)
     else:
+        print("updating record")
         user.update_annotation(id=data["id"], annotation=data)
     user.save()
     # DATASET[index]["username"] = username
@@ -124,9 +159,11 @@ def save_annotation():
     #     ANNOTATIONS[username].append(DATASET[index])
     # except KeyError:
     #     ANNOTATIONS[username] = [DATASET[index]]
-
     return 'Success', 200
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', use_reloader=True, port=11200, debug=True)
+    # config for local testing:
+    app.run(host='0.0.0.0', use_reloader=True, port=81, debug=True)
+    # config for manga server:
+    # app.run(host='0.0.0.0', use_reloader=True, port=11200, debug=True)

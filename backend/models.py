@@ -56,12 +56,15 @@ class User:
             return False
 
     def fetch_annotations(self):
+        import numpy as np
+        
         try:
             self.annotations = pd.read_csv(self.path) 
         except FileNotFoundError:
             self.annotations = pd.DataFrame()
         except pd.errors.EmptyDataError:
             self.annotations = pd.DataFrame()
+        self.annotations = self.annotations.replace(np.nan, '', regex=True)
 
         return self.annotations
 
@@ -133,6 +136,9 @@ class UserTable:
     def save(self):
         self.data.to_csv(self.path, index=False)
         # print(self.data)
+    def __len__(self):
+        return len(self.data)
+
     def __str__(self):
        return self.data.__repr__()
 

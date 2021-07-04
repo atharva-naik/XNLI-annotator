@@ -1,0 +1,500 @@
+2947
+Two men stand in the road, it almost appears to be some sort of movie set on a sunny day in California.
+Some people standing
+entailment
+
+880
+A brown dog jumps over an obstacle.
+The dog is in a pool.
+contradiction
+
+475
+A group of people are in a rowboat in the ocean surrounded by seagulls.
+A group of people are inside watching a hockey game.
+contradiction
+
+9380
+A man sitting on an elephant with a riding seat is talking to a female tourist.
+A person riding a large animal.
+entailment
+
+5037
+Walkers on a concrete boardwalk under a blue sky.
+walkers under a blue sky near the beach
+neutral
+
+270
+A frowning old man in a military cap and a civilian suit stands amongst a crowd of people outdoors carrying signs and balloons.
+An angry military veteran watches as people protest the war.
+neutral
+
+5983
+Young Asian girl is sitting on the ground in rubble.
+The young girl is walking among the tulips.
+contradiction
+
+3137
+A young man with glasses and his companion are attempting to do laundry in a public place.
+Nobody has glasses on
+contradiction
+
+4172
+A sitting man is holding a partially carved stone in front a partially painted wall.
+A man is holding a stone in front of a wall.
+entailment
+
+3467
+A man wearing a welding mask working on a duct.
+The man is working underneath a vehicle.
+contradiction
+
+6517
+A young woman in tight pants talks to a man in the street.
+A young gal in snug pants chats with a guy in the road.
+entailment
+
+2153
+Two construction workers are working in front of a wall which has a bunch of names carved into it.
+The men are playing wind instruments.
+contradiction
+
+7128
+Children are petting small turtles in the grass.
+The children are playing with turtles.
+entailment
+
+8251
+A few people are sitting inside of a building with lots of photography on the walls.
+The people are indoors.
+entailment
+
+3855
+An oriental woman cleaning wood outside from a bucket.
+A woman is cleaning wood.
+entailment
+
+4074
+A man wearing a yellow motorcycle jacket on a motorcycle in midair with a man watching in the background
+A man rides a motorcycle.
+entailment
+
+4642
+A woman carrying a large package on her head walks in front of a building plastered with Portuguese posters advertising a concert.
+A Brazilian woman carries groceries home.
+neutral
+
+4516
+A woman in a green flowered dress is holding a container of yarn animals.
+A lady in a dress has a container of yarn toys.
+entailment
+
+6003
+A woman poses for a picture with a child.
+A child poses for the camera with their mother.
+entailment
+
+4730
+A man wearing black pants and a helmet is riding a brown horse.
+A man is riding a mammoth.
+contradiction
+
+7145
+three dogs run through the grass.
+Three dogs run through the dead, brown grass.
+neutral
+
+7533
+Three people are making transactions at an automated teller machine.
+There are people watching TV inside.
+contradiction
+
+2831
+Two young musicians play from a stage.
+The stage is empty
+contradiction
+
+7710
+A woman in a white tennis outfit is jumping up to hit the ball.
+white outfit women playing tennis
+entailment
+
+9182
+The dog's mouth is open like he is yawning.
+a dog is yawning because he is tired from a walk
+neutral
+
+2015
+A man is laid back in front of a tv.
+he is watching the news
+neutral
+
+2333
+A female guitarist is playing on stage.
+A woman is playing her instrument.
+entailment
+
+7647
+A bearded man wears a roughly sewn hooded costume emblazoned with images of Spiderman.
+A man dressing for a show
+neutral
+
+9669
+People landscaping and gardening the areas around the walkway.
+People are caring for their lawns
+entailment
+
+9112
+A woman wearing glasses and a brown beanie next to a girl with long brown hair holding a book.
+A woman is wearing glasses and a light brown beanie.
+neutral
+
+9526
+Several women in headscarves are standing in a cobbled courtyard.
+Several women jump in a pool and splash each other.
+contradiction
+
+2516
+A white man taking a photo in front of water.
+A man is using the restroom.
+contradiction
+
+3635
+Children play in a shallow pool next to a large image of a girl's face.
+The children are in a very deep pool.
+contradiction
+
+2317
+Three men dressed in white shirts and white hats, (two with baseball caps, the leader with a white construction helmet), pounding sticks on steel and plastic drums.
+Three men pound on some drums
+entailment
+
+1857
+A fat woman wearing faint blue top is blowing soap bubble.
+A fat woman is wearing a shirt.
+entailment
+
+4915
+A group of people are ice skating in a big city.
+The people are sleeping in the train station.
+contradiction
+
+4771
+A little boy punching out flashcards from the cardboard they came in.
+A boy holds some flashcards in his hands
+entailment
+
+6712
+A man, with a blue wrapping around his foot, is about to kick another man, with a red cloth hanging from his belt, in the head.
+a kitten drinks milk
+contradiction
+
+3438
+A group of people, one of which is a woman with a large white and colorful purse, wait to board a large white and blue bus.
+A dog is driving the bus.
+contradiction
+
+2251
+People shopping for vegetables at an outdoor market.
+People shopping for veggies and fruit at a market.
+entailment
+
+4414
+A boy in a yellow t-shirt and pink sweater talks on a cellphone while riding a horse through a crowd of people who are looking on.
+A boy has a light yellow t-shirt and pink sweater.
+neutral
+
+4643
+A woman carrying a large package on her head walks in front of a building plastered with Portuguese posters advertising a concert.
+A woman walks outdoors.
+entailment
+
+3160
+The hockey players and referee are preparing for a face-off.
+The referee and players are getting ready to face-off.
+entailment
+
+5526
+Several men helping each other pull in a fishing net.
+There is one man holding the net.
+contradiction
+
+6570
+Three people are riding a carriage pulled by four horses.
+The oxen are pulling the carriage.
+contradiction
+
+4792
+A man with a beard is talking on the cellphone and standing next to someone who is lying down on the street.
+A man is prone on the street while another man stands next to him.
+entailment
+
+6331
+A little girl in a colorful shirt holding a flower.
+The girl is holding a flower
+entailment
+
+6179
+Two men in hard hats look at a building while on the side of a street.
+2 male humans are working construction.
+neutral
+
+9479
+Swimming in the wide blue ocean.
+The ocean swims in the blue wideness.
+contradiction
+
+4702
+A man is ducking down between the red tulips in a flower field.
+The man is outside.
+entailment
+
+8661
+A older man with gray hair wearing a gray suit next to a green and yellow taxi.
+A older woman sits in a green and yellow taxi.
+contradiction
+
+6756
+A couple is taking a break from bicycling.
+a couple are racing each other on their bikes.
+contradiction
+
+5278
+Two children are sitting on a white blanket, while the other child is sitting in the dirt.
+Two children are having fun together
+neutral
+
+6572
+Black and yellow teams are trying to get the basketball in the goal.
+Red, and green teams are trying to get a soccer ball into a goal.
+contradiction
+
+8513
+Two basketball players on opposing teams, one in white, the other in red, are mid-game, running down the court, white-uniform player with ball-in-hand.
+A group of people are playing basketball.
+entailment
+
+3749
+Woman is looking something.
+A woman is looking
+entailment
+
+3998
+A man in a gray coat is walking on a fallen tree trunk in a forest.
+Two girls play tag in a forest.
+contradiction
+
+9492
+A girl with a blue shirt and a girl with a striped shirt stand next to a girl with a green shirt sitting in a chair.
+Two girls are standing next to a girl who is sitting.
+entailment
+
+2858
+Man and woman rowing on surfboards third rower in distance.
+Couple go out for their first surfing session as a couple.
+neutral
+
+8360
+A woman in a gray sweater talking to another woman in a black jacket.
+A lady wearing gray speaks to a lady in black.
+entailment
+
+6277
+Two men, one in a blue shirt and one in a green shirt analyze a piece of paper in the middle of a workshop area.
+The coworkers are discussing a work related paper in their shop.
+neutral
+
+6987
+A man in a suit with gold buttons and a name tag gestures with his hands as he speaks to another man in a dress shirt who is holding a beverage in a glass.
+A man in a suit with real gold buttons and a name tag gestures with his hands
+neutral
+
+4899
+Two identical brown dogs side by side holding something white in both their mouths.
+Two litter brothers fight over a bone.
+neutral
+
+6932
+An old woman and a young man examine their bingo cards.
+A woman and man are checking their bingo cards to see if they won
+neutral
+
+2189
+A smiling woman and man are seated in front of a microphone in a music studio.
+The woman is frowning.
+contradiction
+
+1315
+A girl crosscountry skis.
+A girl is wearing a cap.
+neutral
+
+2920
+A snowboarder making a big jump doing a trick on a high mountain.
+A snowboarder lands a trick during a competition.
+neutral
+
+322
+A softball player throws the ball to her teammate.
+Two softball players are sitting on a bench.
+contradiction
+
+132
+A guy riding a motorcycle near junk cars
+The man is test driving a motorcycle to decide whether or not he will buy it.
+neutral
+
+2365
+A barefoot child climbs at the jungle gym.
+A child is playing outside on a jungle gym.
+entailment
+
+3608
+A man and woman talk to another woman, all looking concerned, in a room being decorated with streamers and balloons.
+Some people are happy to be throwing a party.
+contradiction
+
+451
+A group of four children pose on a muddy beach, smiling and making faces.
+Four kids pose on a beach.
+entailment
+
+4538
+Two men and two women in jackets walk down a large city street.
+There are people outside.
+entailment
+
+9490
+Three children in a black dog kennel.
+Kids are in a cage.
+neutral
+
+2649
+A man with a tan jacket with a full grocery bag is crossing the street.
+The man just went shopping at the grocery store.
+neutral
+
+3351
+A man in a blue jacket standing at a table with his back to the camera.
+the child was 18 years old
+contradiction
+
+2040
+Woman in a blue dress and carrying a black purse, rides a scooter down the street.
+the girl is riding down a dirt street
+neutral
+
+990
+Three young boys enjoying a day at the beach.
+The boys are in the beach
+entailment
+
+5916
+A person sweeping stairs in a park.
+A groundskeeper at a park
+neutral
+
+2663
+Men are playing rugby while covered in mud.
+There is mud on the rugby players.
+entailment
+
+120
+Two teenage girls conversing next to lockers.
+Girls talking about their problems next to lockers.
+neutral
+
+613
+Man and woman eating a hotdog.
+A man and woman are eating a hotdog at a baseball game.
+neutral
+
+8342
+A little girl in a pink dress crying.
+A young girl is crying for more attention.
+neutral
+
+4249
+A young black man wearing a dark leather jacket and gloves is standing on a lit stage, looking down.
+A black man is performing in a play.
+neutral
+
+945
+A tree worker with a hard hat is cutting down a branch.
+The tree appears to be dead.
+neutral
+
+9126
+A man is spinning a little girl in the air above his head.
+A man is carrying a little girl off the ground.
+entailment
+
+4039
+Children receiving places at an award ceremony.
+An award ceremony is occurring.
+entailment
+
+1252
+A man in aerodynamic gear riding a bicycle down a road around a sharp curve.
+the man is riding outside
+entailment
+
+9640
+A child being watched while getting something out of a tank.
+The tank is filled with water.
+neutral
+
+5810
+A small child is giving heavy metal signs
+A child pretending his hand is a bull.
+contradiction
+
+1860
+A man is swimming with a little girl wearing a pink life jacket in an indoor pool
+A man is swimming in an indoor pool.
+entailment
+
+6264
+A man playing fetch with two brown dogs.
+The dogs are asleep.
+contradiction
+
+2170
+A person lies in a grassy area near a building.
+The person is jumping on a trampoline.
+contradiction
+
+8389
+A couple opening up a new electronically mixer.
+The couple purchased a used mixer
+contradiction
+
+7183
+The black woman is laying out literature.
+The black woman is toasting marshmallows on a barbecue grill.
+contradiction
+
+3490
+Man straining to climb cliff face.
+Man climbing a cliff.
+entailment
+
+7608
+A surfer is performing a jumping stunt in the ocean.
+A daring man in the surf.
+neutral
+
+5837
+Two cars are being driven in a car race.
+A Bugatti and a Lambourgini compete in a road race.
+neutral
+
+533
+A young man waring black and carrying a skateboard looks at an outdoor skateboard park.
+A girl with a ponytail is riding a bike at a park.
+contradiction
+
+6167
+An elderly couple in heavy coats are looking at black and white photos displayed on a wall.
+Octogenarians admiring the old photographs that decorated th wall.
+entailment
+
