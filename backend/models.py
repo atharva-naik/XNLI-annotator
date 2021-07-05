@@ -58,15 +58,18 @@ class User:
 
     def fetch_annotations(self):
         import numpy as np
-        
+
         try:
-            self.annotations = pd.read_csv(self.path) 
+            self.annotations = pd.read_csv(self.path)
         except FileNotFoundError:
             self.annotations = pd.DataFrame()
         except pd.errors.EmptyDataError:
             self.annotations = pd.DataFrame()
         self.annotations = self.annotations.replace(np.nan, '', regex=True)
-        self.ids = {id:"" for id in self.annotations["id"]} 
+        try:
+            self.ids = {id:"" for id in self.annotations['id']}
+        except KeyError:
+            self.ids = {}
 
         return self.annotations
 
@@ -114,6 +117,7 @@ class UserTable:
     def get_user(self, username):
         '''Assuming that usernames are unique'''
         new_df = self.data[self.data["username"] == username]
+        print(len(new_df))
         if len(new_df) == 0:
             return {}
         else:
