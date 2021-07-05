@@ -54,8 +54,20 @@ def dahsboard():
     user = users.get_user(username)
     all = DATASET
     data = user.annotations.to_dict("records")
+    E = 0
+    C = 0
+    N = 0
+    U = 0
     for i in range(len(all)):
     # for i in range(len(data)):
+        if all[i]["LABEL"] == "entailment":
+            E += 1
+        elif all[i]["LABEL"] == "contradiction":
+            C += 1
+        elif all[i]["LABEL"] == "neutral":
+            N += 1
+        else:
+            U += 1
         for j in ["EP","EH","CH","CP","UP","UH","NH","NP"]:
             all[i]["status"] = "pending"
             try:
@@ -63,12 +75,16 @@ def dahsboard():
                 all[i]["status"] = "complete"
             except IndexError:
                 all[i][j] = ""
-    print(all)
     context["data"] = all
     context["NUM_SENTENCES"] = len(all)
     context["NUM_ANNOTATED"] = len(data)
+    context["PERCENT_ANNOTATED"] = f"{100*len(data)/len(all)}%"
     context["INTERANNOTATOR_AGREEMENT"] = "NA"
-
+    context["E"] = 100*E/len(all)
+    context["C"] = 100*C/len(all)
+    context["N"] = 100*N/len(all)
+    context["U"] = 100*U/len(all)
+    context["PERCENT_ANNOTATED_INT"] = 100*len(data)/len(all)
     return render_template("dashboard.html", **context)
 
 @app.route('/annotate', methods=['GET','POST'])
@@ -144,7 +160,7 @@ def save_annotation():
     data["id"] = smart_int(data["id"])
     username = data["username"]
     user = users.get_user(username)
-    if user.fetch_annotation(id=data["id"]) == "":
+    if id not in user.ids:
         print("record doesn't exist, so adding it")
         user.add_annotation(data)
     else:

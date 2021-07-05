@@ -278,10 +278,10 @@
                             </div>
                         </div>
                         <div class="progress-box progress-2">
-                            <h4 class="por-title">Targeted  Visitors</h4>
-                            <div class="por-txt">99,658 Users (90%)</div>
+                            <h4 class="por-title">Annotation Completed</h4>
+                            <div class="por-txt">{{ NUM_ANNOTATED }} ({{ PERCENT_ANNOTATED }})</div>
                             <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: {{ PERCENT_ANNOTATED_INT }}%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div> 
@@ -480,10 +480,10 @@
 
             // Pie chart flotPie1
             var piedata = [
-                { label: "Entailment", data: [[1,33]], color: '#7bfc03'},
-                { label: "Contradiction", data: [[1,33]], color: '#fc3003'},
-                { label: "Neutral", data: [[1,33]], color: '#fce303'},
-                { label: "-", data: [[1,1]], color: 'turquoise'}
+                { label: "Entail {{E}}% ", data: [[1,{{E}}]], color: '#7bfc03'},
+                { label: "Contradict {{C}}% ", data: [[1,{{C}}]], color: '#fc3003'},
+                { label: "Neutral {{N}}% ", data: [[1,{{N}}]], color: '#fce303'},
+                { label: "- {{U}} %", data: [[1,{{U}}]], color: 'turquoise'}
             ];
 
             $.plot('#flotPie1', piedata, {

@@ -27,6 +27,7 @@ class User:
         self.annotations = self.fetch_annotations()
 
     def fetch_annotation(self, id):
+        self.ids[id] = ""
         try:
             record = self.annotations[self.annotations["id"] == id]
         except KeyError:
@@ -44,10 +45,10 @@ class User:
         else:
             return record.to_dict("records")[0]
 
-    def to_dict(self):
-        return {"username":self.username, 
-                "email":self.email, 
-                "password":self.password}
+    # def to_dict(self):
+    #     return {"username":self.username, 
+    #             "email":self.email, 
+    #             "password":self.password}
 
     def authenticate(self, password):
         if pbkdf2_sha256.verify(password, self.password):
@@ -65,10 +66,12 @@ class User:
         except pd.errors.EmptyDataError:
             self.annotations = pd.DataFrame()
         self.annotations = self.annotations.replace(np.nan, '', regex=True)
+        self.ids = {id:"" for id in self.annotations["id"]} 
 
         return self.annotations
 
     def add_annotation(self, row):
+        self.ids[id] = row["id"]
         self.annotations = self.annotations.append(row, ignore_index=True)
 
     def update_annotation(self, id, annotation):
