@@ -192,7 +192,7 @@ class Database:
         filename = filename if filename else f"{table_name}.jsonl" 
         f = open(filename, "w")
         for row in rows:
-            f.write(json.dumps(row, indent=4)+"\n")
+            f.write(json.dumps(row)+"\n")
         f.close()
 
     def toExcel(self, table_name, filename=None):

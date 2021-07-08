@@ -1,0 +1,52 @@
+{
+    "id": 1,
+    "page_no": "1",
+    "snli_id": "2947",
+    "EP": "Two men\u2022 stand\u2022",
+    "CP": "",
+    "NP": "",
+    "UP": "",
+    "EH": "Some\u2022 people standing\u2022",
+    "CH": "",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 2,
+    "page_no": "2",
+    "snli_id": "880",
+    "EP": "A brown dog\u2022",
+    "CP": "jumps over\u2022",
+    "NP": "obstacle.\u2022",
+    "UP": "",
+    "EH": "The dog \u2022",
+    "CH": "is in\u2022",
+    "NH": "pool.\u2022",
+    "UH": ""
+}
+{
+    "id": 3,
+    "page_no": "3",
+    "snli_id": "475",
+    "EP": "A group of people\u2022 are in\u2022",
+    "CP": "",
+    "NP": "surrounded by\u2022",
+    "UP": "rowboat in the ocean\u2022 seagulls.\u2022",
+    "EH": "A group of people\u2022 are inside\u2022",
+    "CH": "",
+    "NH": "watching\u2022",
+    "UH": "hockey game.\u2022"
+}
+{
+    "id": 4,
+    "page_no": "4",
+    "snli_id": "9380",
+    "EP": "A man\u2022 elephant\u2022 with a riding seat\u2022",
+    "CP": "",
+    "NP": "",
+    "UP": "sitting on\u2022 is talking to a female tourist.\u2022",
+    "EH": "A person\u2022 riding\u2022 large animal.\u2022",
+    "CH": "",
+    "NH": "",
+    "UH": ""
+}
