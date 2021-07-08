@@ -186,6 +186,15 @@ class Database:
         filename = filename if filename else f"{table_name}.csv" 
         table.to_csv(filename, index=False)
 
+    def toJSONL(self, table_name, filename=None):
+        import json
+        rows = self.allTableRows(table_name)
+        filename = filename if filename else f"{table_name}.jsonl" 
+        f = open(filename, "w")
+        for row in rows:
+            f.write(json.dumps(row, indent=4)+"\n")
+        f.close()
+
     def toExcel(self, table_name, filename=None):
         import pandas as pd
         table = pd.read_sql_query(f"SELECT * from {table_name}", self.db)

@@ -1,0 +1,130 @@
+{
+    "id": 1,
+    "page_no": "1",
+    "snli_id": "2947",
+    "EP": "Two men stand\u2022",
+    "CP": "",
+    "NP": "",
+    "UP": "in the road, it almost appears to be some sort of movie set on a sunny day in California\u2022",
+    "EH": "Some people standing\u2022",
+    "CH": "",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 2,
+    "page_no": "2",
+    "snli_id": "880",
+    "EP": "A brown dog\u2022",
+    "CP": "over an obstacle\u2022",
+    "NP": "",
+    "UP": "jumps\u2022",
+    "EH": "The dog\u2022",
+    "CH": "in a pool\u2022",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 3,
+    "page_no": "3",
+    "snli_id": "475",
+    "EP": "A group of people\u2022",
+    "CP": "in the ocean\u2022",
+    "NP": "surrounded by seagulls\u2022",
+    "UP": "in a rowboat\u2022",
+    "EH": "A group of people\u2022",
+    "CH": "inside\u2022",
+    "NH": "watching a hockey game\u2022",
+    "UH": ""
+}
+{
+    "id": 4,
+    "page_no": "4",
+    "snli_id": "9380",
+    "EP": "A man\u2022 on an elephant\u2022 with a riding seat\u2022",
+    "CP": "",
+    "NP": "",
+    "UP": "sitting\u2022 is talking to a female tourist\u2022",
+    "EH": "A person\u2022 riding\u2022 a large animal\u2022",
+    "CH": "",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 5,
+    "page_no": "5",
+    "snli_id": "5037",
+    "EP": "Walkers\u2022 under a blue sky\u2022",
+    "CP": "",
+    "NP": "on a concrete boardwalk\u2022",
+    "UP": "",
+    "EH": "walkers\u2022 under a blue sky\u2022",
+    "CH": "",
+    "NH": "near the beach\u2022",
+    "UH": ""
+}
+{
+    "id": 6,
+    "page_no": "6",
+    "snli_id": "270",
+    "EP": "A frowning old man in a military cap\u2022",
+    "CP": "",
+    "NP": "stands amongst a crowd of people outdoors carrying signs and balloons\u2022",
+    "UP": "",
+    "EH": "An angry military veteran\u2022",
+    "CH": "",
+    "NH": "watches as people protest the war\u2022",
+    "UH": ""
+}
+{
+    "id": 7,
+    "page_no": "7",
+    "snli_id": "5983",
+    "EP": "Young Asian girl\u2022",
+    "CP": "sitting\u2022 on the ground in rubble\u2022",
+    "NP": "",
+    "UP": "",
+    "EH": "The young girl \u2022",
+    "CH": "walking\u2022 among the tulips\u2022",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 8,
+    "page_no": "8",
+    "snli_id": "3137",
+    "EP": "glasses\u2022",
+    "CP": "A young man\u2022",
+    "NP": "",
+    "UP": "and his companion are attempting to do laundry in a public place\u2022",
+    "EH": "glasses\u2022",
+    "CH": "Nobody\u2022",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 9,
+    "page_no": "9",
+    "snli_id": "4172",
+    "EP": "A sitting man\u2022 holding\u2022 a partially carved stone\u2022 in front a partially painted wall\u2022",
+    "CP": "",
+    "NP": "",
+    "UP": "",
+    "EH": "A man\u2022 holding\u2022 a stone\u2022 in front of a wall\u2022",
+    "CH": "",
+    "NH": "",
+    "UH": ""
+}
+{
+    "id": 10,
+    "page_no": "10",
+    "snli_id": "3467",
+    "EP": "A man\u2022 working\u2022",
+    "CP": "on a duct\u2022",
+    "NP": "",
+    "UP": "wearing a welding mask\u2022",
+    "EH": "The man\u2022 working\u2022",
+    "CH": "underneath a vehicle\u2022",
+    "NH": "",
+    "UH": ""
+}

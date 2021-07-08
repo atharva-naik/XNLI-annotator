@@ -2,7 +2,9 @@
 import sys
 import json
 import math
+import time
 import pandas as pd
+from datetime import datetime
 from backend.database import Database
 from passlib.hash import pbkdf2_sha256
 from backend.utils import rand_str, smart_int
@@ -161,19 +163,19 @@ def login():
         else: 
             return redirect(f'/login?user={USERNAME}')
 
-@app.route('/export_csv')
-def export_csv():
+@app.route('/export')
+def export():
     username = request.args.get('user')
     print(f"csv export requested by: {username}")
     db = Database("data.sqlite")
-    filename = rand_str()+".csv"
-    db.toCSV(username, filename=filename)
+    now = int(time.time())
+    filename = "exports/"+f"{username}_{now}.jsonl"
+    db.toJSONL(username, filename)
     db.close()
 
     return send_file(filename, 
-                     mimetype='text/csv',
-                     cache_timeout=math.inf,
-                     attachment_filename=filename,
+                     cache_timeout=1,
+                     attachment_filename=f"{username}.jsonl",
                      as_attachment=True)
 
 @app.route('/save', methods=['POST'])
