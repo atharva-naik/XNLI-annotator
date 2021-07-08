@@ -17,6 +17,13 @@ def smart_int(x):
     else: 
         return int(x)
 
+def db_escape(string):
+    string = str(string)
+    string = string.replace("'","''")
+    string = string.replace('"','""')
+
+    return string
+
 def read_data(path):
     import json
     from tqdm import tqdm

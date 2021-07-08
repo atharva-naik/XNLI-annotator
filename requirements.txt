@@ -3,4 +3,5 @@ numpy
 pandas
 passlib
 flask-wtf
+prettytable
 flask-simple-captcha

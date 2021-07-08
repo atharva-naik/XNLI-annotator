@@ -8,7 +8,7 @@
 
 </head>
   <body>
-    <form action="{{ url_for('login') }}" method="post">
+    <form action="{{ url_for('login', user=USERNAME) }}" method="post">
       <h1>Welcome back, {{ USERNAME }}</h1>
       <div class="icon">
         <img src="{{ url_for('static',filename='avatar.png') }}" alt="USER" height="100" width="100">

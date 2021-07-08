@@ -1955,6 +1955,18 @@ header .form-inline {
   font-weight: 500;
   color: #373757; }
 
+.export {
+  font-size: 0.8rem;
+  border: none;
+  background-color: #626262;
+  color: white;
+}
+
+.export:hover {
+  background-color: white;
+  color: #626262;
+}
+
 .stat-widget-two .stat-digit i {
   font-size: 18px;
   margin-right: 5px; }

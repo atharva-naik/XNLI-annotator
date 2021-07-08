@@ -58,14 +58,7 @@
                     <button class="button" onclick="window.location.href='{{ PREV_URL }}'">← Prev</button>
                     <button class="button" onclick="window.location.href='{{ NEXT_URL }}'">Next →</button>
                     <br><br>
-                    <!-- {%for i in range(0, DATASET_LENGTH)%}
-                        {%if i+1 == SENTENCE_NUM %}
-                            <ul><button id="X" class="button higlighted" onclick="window.location.href='/annotate?id={{ i+1 }}&user={{ USERNAME }}'">{{ i+1 }}</button></ul>
-                        {%else%}
-                            <ul><button id="X" class="button" onclick="window.location.href='/annotate?id={{ i+1 }}&user={{ USERNAME }}'">{{ i+1 }}</button></ul>
-                        {%endif%}
-                    {%endfor%} -->
-                    <h3 class="footer">Page {{ SENTENCE_NUM }}</h5>
+                    <h3 class="footer">Page {{ id }}</h5>
                 </div>
             </div>
             <div id="rightcolumn" style="border: 1px solid; padding: 5px; margin-right: -10px;">

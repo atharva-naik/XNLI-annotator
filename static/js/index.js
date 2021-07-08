@@ -12,6 +12,23 @@ function rgb2hex(rgb) {
   return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
+var $ = jQuery;
+$("#export").on("click", function() {
+  alert("exporting csv")
+  var data = {
+    username: params.get("user"),
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/export_csv',
+    data: JSON.stringify(data),
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8'
+  }).done(function(msg) {
+    alert("Data Saved: " + msg);
+  });
+})
+
   document.getElementById("E").onclick = function() {
     // Get Selection
     sel = window.getSelection();
@@ -142,10 +159,9 @@ function rgb2hex(rgb) {
 //     H.innerHTML = H.textContent
 //     alert("annotation saved!")
 // }
-var $ = jQuery;
 $("#S").on("click", function() {
   // sentence1: document.getElementById("P").innerHTML,
-  // sentence2: document.getElementById("H").innerHTML,
+  // sentence2: document.getElementById("H").innerHTML
   var P = document.getElementById("P");
   var H = document.getElementById("H");
   var FP = P.getElementsByTagName('font');
@@ -155,37 +171,37 @@ $("#S").on("click", function() {
   for (phrase of FP) {
     if (rgb2hex(phrase.style.backgroundColor) == "#7bfc03") {
       // deal with entailment cases.
-      EP += phrase.innerText+"<SEP> ";
+      EP += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#fc3003") {
       // deal with contradiction cases.
-      CP += phrase.innerText+"<SEP> ";
+      CP += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#fce303") {
       // deal with neutral cases.
-      NP += phrase.innerText+"<SEP> ";
+      NP += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#30d5c8") {
       // deal with unaligned premise.
-      UP += phrase.innerText+"<SEP> ";
+      UP += phrase.innerText+"• ";
     }
   }
   for (phrase of FH) {
     if (rgb2hex(phrase.style.backgroundColor) == "#7bfc03") {
       // deal with entailment cases.
-      EH += phrase.innerText+"<SEP> ";
+      EH += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#fc3003") {
       // deal with contradiction cases.
-      CH += phrase.innerText+"<SEP> ";
+      CH += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#fce303") {
       // deal with neutral cases.
-      NH += phrase.innerText+"<SEP> ";
+      NH += phrase.innerText+"• ";
     }
     else if (rgb2hex(phrase.style.backgroundColor) == "#30d5c8") {
       // deal with unaligned premise.
-      UH += phrase.innerText+"<SEP> ";
+      UH += phrase.innerText+"• ";
     }
   }
   document.getElementById("EP").innerText = EP;

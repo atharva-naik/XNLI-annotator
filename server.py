@@ -1,29 +1,42 @@
 #!/usr/bin/env python3
 import sys
 import json
-from numpy import inexact
+import math
 import pandas as pd
+from backend.database import Database
 from passlib.hash import pbkdf2_sha256
-from backend.models import User, UserTable
-# from flask_simple_captcha import CAPTCHA
-from backend.utils import rand_str, smart_int, read_data
-from flask import Flask, render_template, request, jsonify, redirect, flash
+from backend.utils import rand_str, smart_int
+from flask import Flask, g, render_template, request, jsonify, redirect, flash, send_file
 
 
-# CAPTCHA_CONFIG = {'SECRET_CSRF_KEY':rand_str(length=43)}
-app=Flask(__name__, static_url_path='/static')
-# CAPTCHA=CAPTCHA(config=config.CAPTCHA_CONFIG)
-# app=CAPTCHA.init_app(app)
-users = UserTable("data/users.csv")
-assert len(sys.argv)>1, "need to give filename of the json or csv"
-DATASET = read_data(sys.argv[1]) # global variable to store the dataset.
+# assert len(sys.argv)>1, "need to give filename of the json or csv"
+app = Flask(__name__, static_url_path='/static')
+db = Database("data.sqlite")
+db.dropTable("sentences")
+size = db.addTableFromJSONL("sentences",
+            path="data/SNLI_sample.jsonl")
+db.close()
 USERNAME = ""
 
-# APP functions
+# DATABASE close when app crashes:
+@app.teardown_appcontext
+def close(error):
+    # db.close()
+    pass
+
+# APP endpoints:
 @app.route('/',methods=['GET','POST'])
 def index():
-    # return "Hello World"
-    return render_template("index.html", USERS=users.all_usernames())
+    db = Database("data.sqlite")
+    db.addTable("users", 
+                id="INTEGER PRIMARY KEY AUTOINCREMENT", 
+                username="text NOT NULL UNIQUE",
+                email="text",
+                password="text")
+    USERS = db.allTableColumns("users").get("username",[])
+    db.close()
+
+    return render_template("index.html", USERS=USERS)
 
 @app.route('/instructions', methods=['GET','POST'])
 def instructions():
@@ -35,151 +48,152 @@ def thankyou():
 
 @app.route('/complete', methods=['GET','POST'])
 def complete():
-    username = request.args.get('user', default="Anonymous", type=str)
-    context = {}
-    context["USERNAME"] = username 
-    context["DATASET_LENGTH"] = 0
+    USERNAME = request.args.get('user', default="Anonymous", type=str)
 
-    return render_template("complete.html", **context)
+    return render_template("complete.html", USERNAME=USERNAME)
 
 @app.route('/dashboard', methods=['GET','POST'])
 def dahsboard():
-    global users
-    global DATASET
-
-    username = request.args.get('user', default="Anonymous", type=str)
+    E,C,N,U = 0,0,0,0
     context = {}
-    context["USERNAME"] = username
-    context["NUM_USERS"] = len(users)
-    user = users.get_user(username)
-    all = DATASET
-    data = user.annotations.to_dict("records")
-    E = 0
-    C = 0
-    N = 0
-    U = 0
-    for i in range(len(all)):
-    # for i in range(len(data)):
-        if all[i]["LABEL"] == "entailment":
+    db = Database("data.sqlite")
+    context["USERNAME"] = request.args.get('user', default="Anonymous", type=str)
+    context["NUM_USERS"] = len(db.table_names)-3
+    sentences = db.allTableRows("sentences")
+    for i in range(size):
+        if sentences[i]["LABEL"] == "entailment":
             E += 1
-        elif all[i]["LABEL"] == "contradiction":
+        elif sentences[i]["LABEL"] == "contradiction":
             C += 1
-        elif all[i]["LABEL"] == "neutral":
+        elif sentences[i]["LABEL"] == "neutral":
             N += 1
         else:
             U += 1
-        for j in ["EP","EH","CH","CP","UP","UH","NH","NP"]:
-            all[i]["status"] = "pending"
-            try:
-                all[i][j] = data[i][j].replace("<SEP>","▉")[:-1]
-                all[i]["status"] = "complete"
-            except IndexError:
-                all[i][j] = ""
-    context["data"] = all
-    context["NUM_SENTENCES"] = len(all)
-    context["NUM_ANNOTATED"] = len(data)
-    context["PERCENT_ANNOTATED"] = f"{100*len(data)/len(all)}%"
+        # for j in ["EP","EH","CH","CP","UP","UH","NH","NP"]:
+        # sentences[i]["status"] = "pending"
+        record = db.getTableRow(context["USERNAME"], page_no=i+1)
+        sentences[i].update(record)
+        if record == {}:
+            sentences[i]["status"] = "pending"
+        else:
+            sentences[i]["status"] = "complete"
+        
+    context["data"] = sentences
+    context["NUM_SENTENCES"] = len(sentences)
+    context["NUM_ANNOTATED"] = db.getTableLength(context["USERNAME"])
+    # context["PERCENT_ANNOTATED"] = f"{100*db.getTableLength(context['USERNAME'])/len(sentences)}%"
     context["INTERANNOTATOR_AGREEMENT"] = "NA"
-    context["E"] = 100*E/len(all)
-    context["C"] = 100*C/len(all)
-    context["N"] = 100*N/len(all)
-    context["U"] = 100*U/len(all)
-    context["PERCENT_ANNOTATED_INT"] = 100*len(data)/len(all)
+    context["E"] = 100*E/len(sentences)
+    context["C"] = 100*C/len(sentences)
+    context["N"] = 100*N/len(sentences)
+    context["U"] = 100*U/len(sentences)
+    context["PERCENT_ANNOTATED_INT"] = 100*db.getTableLength(context['USERNAME'])/len(sentences)
+    db.close()
+
     return render_template("dashboard.html", **context)
 
 @app.route('/annotate', methods=['GET','POST'])
 def annotation_page():
-    global users
-    global DATASET
-    id = request.args.get('id', default=1, type=int) 
-    # 1 for the first sentence, 2 for the second ... N for the Nth, len(DATASET) for the last one.
+    id = request.args.get('id', default=1, type=int) # 1 for the first sentence, 2 for the second ... N for the Nth, len(DATASET) for the last one.
     username = request.args.get('user', default="Anonymous", type=str)
-    record = DATASET[id-1]
-    record["NEXT_URL"] = f'/annotate?id={id+1}&user={username}'
-    record["PREV_URL"] = f'/annotate?id={id-1}&user={username}'
-    if id == len(DATASET):
-        record["NEXT_URL"] = f'/complete?user={username}'
-        print(record["NEXT_URL"])
-    elif id == 1:
-        record["PREV_URL"] = f'/annotate?id={id}&user={username}'
-    user = users.get_user(username)
-    record["USERNAME"] = username
-    record["DATASET_LENGTH"] = len(DATASET)
-    annotation = user.fetch_annotation(id)
+    db = Database("data.sqlite")
+    db.addTable(username, 
+                id="INTEGER PRIMARY KEY AUTOINCREMENT", 
+                page_no="text NOT NULL UNIQUE",
+                snli_id="text NOT NULL UNIQUE",
+                EP="text",
+                CP="text",
+                NP="text",
+                UP="text",
+                EH="text",
+                CH="text",
+                NH="text",
+                UH="text")
+    record = db.getTableRow("sentences", id=id)
+    annotation = db.getTableRow(username, page_no=id)
+    db.close()
+    record["NEXT_URL"] = f'/annotate?id={min(id+1,size)}&user={username}'
+    record["PREV_URL"] = f'/annotate?id={max(id-1,1)}&user={username}'
     record.update(annotation)
-    # print(record)
+    record["USERNAME"] = username
+    print(record)
+
     return render_template("template.html", **record)
 
 @app.route('/register', methods=['POST','GET'])
 def register():
-    global users
     if request.method == 'GET':
         return render_template('register.html')
 
     if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
+        username = request.form["username"]
         password = request.form["password"]
         repeat_password = request.form["repeat_password"]
         if repeat_password != password:
             return render_template('invalid.html', PREVIOUS_URL="/register")
-        # return 'Success', 200
-        password = pbkdf2_sha256.hash(password)
-        users.add_user({"username":username, 
-                        "email":email,
-                        "password":password})
-        print(username, email, password, repeat_password)
-        users.save()
+        db = Database("data.sqlite")
+        db.addTableRow("users",
+                       username=request.form['username'],
+                       email=request.form['email'],
+                       password=pbkdf2_sha256.hash(password))
+        db.close()
 
         return redirect(f'/annotate?id=1&user={username}')
 
 @app.route('/login', methods=['POST','GET'])
 def login():
-    global users
-    global USERNAME
     if request.method == 'GET':
         USERNAME = request.args.get('user')
+        print("username", USERNAME)
 
         return render_template('login.html', USERNAME=USERNAME)
 
-    if request.method == 'POST':
+    if request.method == 'POST':    
+        USERNAME = request.args.get('user')
         password = request.form["password"]
-        user = users.get_user(USERNAME)
-        print(user)
-        if user.authenticate(password):
+        print("username", USERNAME)
+        db = Database("data.sqlite")
+        record = db.getTableRow("users", username=USERNAME)
+        print(record["password"])
+        db.close()
+        if pbkdf2_sha256.verify(password, record["password"]):
             return redirect(f'/annotate?id=1&user={USERNAME}')
         else: 
             return redirect(f'/login?user={USERNAME}')
 
+@app.route('/export_csv')
+def export_csv():
+    username = request.args.get('user')
+    print(f"csv export requested by: {username}")
+    db = Database("data.sqlite")
+    filename = rand_str()+".csv"
+    db.toCSV(username, filename=filename)
+    db.close()
+
+    return send_file(filename, 
+                     mimetype='text/csv',
+                     cache_timeout=math.inf,
+                     attachment_filename=filename,
+                     as_attachment=True)
+
 @app.route('/save', methods=['POST'])
 def save_annotation():
-    global users
-    global DATASET
-
     data = request.get_json(force=True)  # parse as JSON
-    data["id"] = smart_int(data["id"])
     username = data["username"]
-    user = users.get_user(username)
-    if id not in user.ids:
-        print("record doesn't exist, so adding it")
-        user.add_annotation(data)
-    else:
-        print("updating record")
-        user.update_annotation(id=data["id"], annotation=data)
-    user.save()
-    # DATASET[index]["username"] = username
-    # DATASET[index]["sentence1"] = data["sentence1"]
-    # DATASET[index]["sentence2"] = data["sentence2"]
+    db = Database("data.sqlite")
+    record = db.getTableRow("sentences", id=data["id"])
+    data["SNLI_ID"] = record["SNLI_ID"]
+    data["PAGE_NO"] = data["id"]
+    del data["id"]
+    del data["username"]
+    db.modifyTableRow(username,
+                      "page_no",
+                      data["PAGE_NO"],
+                      **data) 
+    db.close()
 
-    # try:
-    #     ANNOTATIONS[username].append(DATASET[index])
-    # except KeyError:
-    #     ANNOTATIONS[username] = [DATASET[index]]
     return 'Success', 200
 
 
 if __name__ == "__main__":
-    # config for local testing:
-    # app.run(host='0.0.0.0', use_reloader=True, port=81, debug=True)
-    # config for manga server:
     app.run(host='0.0.0.0', use_reloader=True, port=11200, debug=True)
