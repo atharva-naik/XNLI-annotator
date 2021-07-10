@@ -1,3 +1,5 @@
+COLOR_MAP = {"entailment":"#7bfc03", "contradiction":"#fc3003", "neutral":"#fce303"}
+
 def rand_str(length=12):
     import random
     from string import digits, ascii_letters

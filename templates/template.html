@@ -51,14 +51,19 @@
                     <button id="N" class="button buttonN">Neutral</button>
                     <button id="U" class="button buttonU">Unaligned</button>
                     <br>
-                    <button id="x" class="button buttonC">Clear</button>
-                    <button id="X" class="button buttonC">Clear All</button>
+                    <button id="x" title="clear selected span" class="button buttonC">Clear</button>
+                    <button id="m" class="button buttonN">Meaning</button>
+                    <button id="M" class="button buttonN">Mark</button>
+                    <button id="X" title="clear both the premise and hypothesis" class="button buttonC">Clear All</button>
+                    <br>
+                    <button id="XP" title="clear just the premise" class="button buttonC">Clear P</button>
                     <button id="S" class="button buttonE">Save</button>
+                    <button id="XH" title="clear just the hypothesis" class="button buttonC">Clear H</button>
                     <br>
                     <button class="button" onclick="window.location.href='{{ PREV_URL }}'">← Prev</button>
                     <button class="button" onclick="window.location.href='{{ NEXT_URL }}'">Next →</button>
                     <br><br>
-                    <h3 class="footer">Page {{ id }}</h5>
+                    <h3 class="footer">Page {{ PAGE_NUM }}</h5>
                 </div>
             </div>
             <div id="rightcolumn" style="border: 1px solid; padding: 5px; margin-right: -10px;">
@@ -70,18 +75,20 @@
                 <div id="statusbar">
                     <div style="margin: 5px;">
                         <br>
-                        <h4 style="color: white; margin-top: 0; text-align: center; font-size: 16px; margin-bottom: -3px;" class="profile">{{ USERNAME }}</h4>
+                        <h4 style="color: white; margin-top: -10px; text-align: center; font-size: 16px; margin-bottom: -3px;" class="profile">{{ USERNAME }}</h4>
                         <div style="text-align: center;">
                             <img src="{{ url_for('static',filename='avatar.png') }}" alt="USER" height="40" width="40" onclick="window.location.href='/'">
                         </div>
                         <div style="text-align: center;">
-                            <button id="N" class="button_dark" onclick="window.location.href='/'" style="font-size: 12px; margin-bottom: 25px;">Switch User</button>
+                            <button id="N" class="button_dark" onclick="window.location.href='/'" style="font-size: 12px; margin-bottom: 10px;">Switch User</button>
                         </div>
                         <br>
                     </div>
-                    <div style="margin: 5px; background: white">
+                    <div style="margin: 5px; background: white; text-align: center;">
                         <!-- <h5 class="section_title" style="padding: 10px">Current Annotation</h5> -->
                         <br>
+                        SNLI id: <mark style="background-color: #57172a; color: white;">{{ SNLI_ID }}</mark> <br>
+                        Gold Label: <mark style="background-color: {{ COLOR }}; color: white;">{{ LABEL }}<mark>
                         <br>
                         <table style="margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px">
                             <tr>
@@ -114,10 +121,19 @@
                         <br>
                     </div>
                     <div style="margin-left: auto; margin-right: auto;">
-                        <h5 class="section_title" style="margin-top: 20px; margin-bottom: 10px; font-size: 18px; color: #fff;">View Annotations</h5>
+                        <h5 class="section_title" style="margin-top: 15px; margin-bottom: 10px; font-size: 17px; color: #fff;">View Annotations</h5>
                         <div style="text-align: center;">
                             <img src="{{ url_for('static',filename='monitor.png') }}" alt="click for instructions" height="35" width="35" onclick="window.location.href='/dashboard?user={{ USERNAME }}'">
+                            <br>
+                            <button class="button_dark" onclick="window.location.href='/marked?user={{ USERNAME }}'" style="font-size: 12px;">Marked</button>
                         </div>
+                    </div>
+                    <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                        <h5 class="section_title" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px; color: #fff;">Meaning of selected word</h5>
+                        <input style="font-size: 10px;" readonly></input>
+                        <!-- <div style="text-align: center;">
+                            <img src="{{ url_for('static',filename='monitor.png') }}" alt="click for instructions" height="35" width="35" onclick="window.location.href='/dashboard?user={{ USERNAME }}'">
+                        </div> -->
                     </div>
                 </div>
             </div>

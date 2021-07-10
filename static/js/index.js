@@ -9,7 +9,12 @@ function hex(x) {
 
 function rgb2hex(rgb) {
   rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-  return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+  try {
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+  }
+  catch(err) {
+    console.log(err);
+  }
 }
 
 var $ = jQuery;
@@ -130,6 +135,21 @@ $("#export").on("click", function() {
     H.innerHTML = H.textContent
   }
 
+  document.getElementById("m").onclick = function() {
+    var selected_text = window.getSelection().toString();
+    selected_text;
+  }
+
+  document.getElementById("XP").onclick = function() {
+    var P = document.getElementById("P")
+    P.innerHTML = P.textContent
+  }
+
+  document.getElementById("XH").onclick = function() {
+    var H = document.getElementById("H")
+    H.innerHTML = H.textContent
+  }
+
   document.getElementById("x").onclick = function() {
     // Get Selection
     sel = window.getSelection();
@@ -147,7 +167,7 @@ $("#export").on("click", function() {
     tagName = sel.getRangeAt(0).startContainer.parentNode.tagName; // if font and not div
     if (divId == "P" || divId == "H" || tagName == "FONT") {
       document.execCommand("ForeColor", false, "black");
-      document.execCommand("HiliteColor", false, "white");
+      document.execCommand("HiliteColor", false, "#fff");
     }
     // Set design mode to off
     document.designMode = "off";

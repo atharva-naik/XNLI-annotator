@@ -7,7 +7,7 @@ import pandas as pd
 from datetime import datetime
 from backend.database import Database
 from passlib.hash import pbkdf2_sha256
-from backend.utils import rand_str, smart_int
+from backend.utils import rand_str, smart_int, COLOR_MAP
 from flask import Flask, g, render_template, request, jsonify, redirect, flash, send_file
 
 
@@ -116,6 +116,8 @@ def annotation_page():
     db.close()
     record["NEXT_URL"] = f'/annotate?id={min(id+1,size)}&user={username}'
     record["PREV_URL"] = f'/annotate?id={max(id-1,1)}&user={username}'
+    record["PAGE_NUM"] = id
+    record["COLOR"] = COLOR_MAP.get(record["LABEL"])
     record.update(annotation)
     record["USERNAME"] = username
     print(record)
