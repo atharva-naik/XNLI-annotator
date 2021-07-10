@@ -12,8 +12,22 @@ This package requires flask
 
 ```git clone http://github.com/atharva-naik/XNLI-annotator```
 
-### Demo:
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/login_page.png" width="400"/>
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/UI.png" width="400"/>
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/dashboard.png" width="400"/>
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/dashboard2.png" width="400"/>
+### Instructions:
+Images and videos to explain the use of the site.
+##### User Page
+Create and login page for multiple users. Having a login/authentication based system helps to prevent people from seeing each other's annotations to prevent them from influencing each other.
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/login_page.png" width="800"/>
+
+##### Main Annotation Page
+The main interface for annotating.
+Features/Tools:
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/UI.png" width="800"/>
+
+##### Annotation dashboard
+This page is to review your annotations.
+
+This part shows statistics of the current dataset
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/dashboard.png" width="800"/>
+
+This page shows the actual annotations
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/dashboard2.png" width="800"/>
