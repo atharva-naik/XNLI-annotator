@@ -53,7 +53,7 @@
                     <br>
                     <button id="x" title="clear selected span" class="button buttonC">Clear</button>
                     <button id="m" class="button buttonN">Meaning</button>
-                    <button id="M" class="button buttonN">Mark</button>
+                    <button id="M" class="button buttonN" onclick="window.location.href='/mark_sentence?user={{ USERNAME }}&id={{ PAGE_NUM }}'">Mark</button>
                     <button id="X" title="clear both the premise and hypothesis" class="button buttonC">Clear All</button>
                     <br>
                     <button id="XP" title="clear just the premise" class="button buttonC">Clear P</button>
@@ -64,6 +64,10 @@
                     <button class="button" onclick="window.location.href='{{ NEXT_URL }}'">Next →</button>
                     <br><br>
                     <h3 class="footer">Page {{ PAGE_NUM }}</h5>
+                    <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                        <h5 class="section_title" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">Meaning of selected word</h5>
+                        <textarea id="Meaning" style="font-size: 14px; width:60%; height:50px" readonly></textarea>
+                    </div>
                 </div>
             </div>
             <div id="rightcolumn" style="border: 1px solid; padding: 5px; margin-right: -10px;">
@@ -127,13 +131,6 @@
                             <br>
                             <button class="button_dark" onclick="window.location.href='/marked?user={{ USERNAME }}'" style="font-size: 12px;">Marked</button>
                         </div>
-                    </div>
-                    <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                        <h5 class="section_title" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px; color: #fff;">Meaning of selected word</h5>
-                        <input style="font-size: 10px;" readonly></input>
-                        <!-- <div style="text-align: center;">
-                            <img src="{{ url_for('static',filename='monitor.png') }}" alt="click for instructions" height="35" width="35" onclick="window.location.href='/dashboard?user={{ USERNAME }}'">
-                        </div> -->
                     </div>
                 </div>
             </div>

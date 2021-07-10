@@ -137,8 +137,42 @@ $("#export").on("click", function() {
 
   document.getElementById("m").onclick = function() {
     var selected_text = window.getSelection().toString();
-    selected_text;
+    var url = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${selected_text}`
+    var request = new Request(url);
+    console.log(url);
+    var textarea = document.getElementById("Meaning");
+    fetch(request).then(function(response) {
+      return response.json();
+    }).then(function(obj){
+      try {
+        meaning = obj[0]["meanings"][0]["definitions"][0].definition;
+        textarea.value = meaning;
+        // console.log(meaning);
+      }
+      catch (e) {
+        title = obj.title;
+        textarea.value = title;
+        // console.log("NOT FOUND");
+      }
+    })
   }
+  // document.getElementById("M").onclick = function() {
+  //   marker_url = 
+  //   window.location.href=''
+  // }
+
+  // $("#M").on("click", function() {
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: '/mark_sentence',
+  //     data: JSON.stringify(data),
+  //     dataType: 'json',
+  //     contentType: 'application/json; charset=utf-8'
+  //   }).done(function(msg) {
+  //     alert("Data Saved: " + msg);
+  //   });
+  //   alert("sentence has been marked!");
+  // })
 
   document.getElementById("XP").onclick = function() {
     var P = document.getElementById("P")

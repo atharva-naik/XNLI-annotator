@@ -254,36 +254,17 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card-body">
-                        <h5 class="box-title">Statistics </h5>
+                        <h5 class="box-title"> Leaderboard </h5>
                         <br>
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title">Visits</h4>
-                            <div class="por-txt">96,930 Users (40%)</div>
-                            <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                        {% for user in ANNOTATION_PROGRESS %}
                         <div class="progress-box progress-2">
-                            <h4 class="por-title">Bounce Rate</h4>
-                            <div class="por-txt">3,220 Users (24%)</div>
+                            <h4 class="por-title">{{ user }}'s Progess</h4>
+                            <div class="por-txt">{{ ANNOTATION_PROGRESS[user]['num'] }} ({{ ANNOTATION_PROGRESS[user]['percent'] }}%)</div>
                             <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-flat-color-2" role="progressbar" style="width: 24%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-flat-color-{{ ANNOTATION_PROGRESS[user]['i'] }}" role="progressbar" style="width: {{ ANNOTATION_PROGRESS[user]['percent'] }}%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <div class="progress-box progress-2">
-                            <h4 class="por-title">Unique Visitors</h4>
-                            <div class="por-txt">29,658 Users (60%)</div>
-                            <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress-box progress-2">
-                            <h4 class="por-title">Annotation Completed</h4>
-                            <div class="por-txt">{{ NUM_ANNOTATED }} ({{ NUM_ANNOTATED }}%)</div>
-                            <div class="progress mb-2" style="height: 5px;">
-                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: {{ PERCENT_ANNOTATED_INT }}%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div> 
                 </div>
                 <div class="col-xl-4">

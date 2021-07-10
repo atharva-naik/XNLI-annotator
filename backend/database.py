@@ -115,6 +115,17 @@ class Database:
             print("adding new record")
             self.addTableRow(table_name, **columns)
         # print(query+predicate)
+    def deleteTableRow(self, table_name, **select_var):
+        if len(select_var) == 0:
+            return False
+        else:
+            k,v = list(select_var.keys())[0], list(select_var.values())[0]
+            query = f"DELETE FROM {table_name} WHERE {k}='{db_escape(v)}';"
+            self.execute(query)
+            self.db.commit()
+            # return True if list(dict(row).values())[0] == 1 else False
+            return True
+
     def viewTable(self, table_name, *fields):
         '''
         fields are args —
@@ -153,12 +164,17 @@ class Database:
         return records 
 
     def allTableColumns(self, table_name):
+        import sqlite3
         import pandas as pd
-        rows = self.allTableRows(table_name)
-        columns = {}
-        df = pd.DataFrame(rows)
-        for column in df: 
-            columns[column] = list(df[column])
+
+        try:
+            rows = self.allTableRows(table_name)
+            columns = {}
+            df = pd.DataFrame(rows)
+            for column in df: 
+                columns[column] = list(df[column])
+        except sqlite3.OperationalError:
+            return {}
 
         return columns
 

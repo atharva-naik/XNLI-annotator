@@ -54,6 +54,69 @@ def complete():
 
     return render_template("complete.html", USERNAME=USERNAME)
 
+@app.route('/mark_sentence', methods=['POST','GET'])
+def mark_sentence():
+    id = request.args.get('id', default=1, type=int)
+    username = request.args.get('user', default="Anonymous", type=str)
+    db = Database("data.sqlite")
+    db.addTable(username+"_marked", 
+                id="INTEGER PRIMARY KEY AUTOINCREMENT", 
+                page_no="text NOT NULL UNIQUE",
+                status="text")
+    db.modifyTableRow(username+"_marked",
+                      "page_no",
+                      id,
+                      page_no=id,
+                      status="") 
+    db.close()
+    return redirect(f'/annotate?id={id}&user={username}')
+
+@app.route('/unmark_sentence', methods=['POST','GET'])
+def unmark_sentence():
+    id = request.args.get('id', default=1, type=int)
+    username = request.args.get('user', default="Anonymous", type=str)
+    db = Database("data.sqlite") 
+    db.deleteTableRow(username+"_marked", page_no=id) 
+    db.close()
+    return redirect(f'/marked?user={username}')
+
+@app.route('/marked', methods=['GET','POST'])
+def marked():
+    E,C,N,U = 0,0,0,0
+    context = {}
+    db = Database("data.sqlite")
+    context["USERNAME"] = request.args.get('user', default="Anonymous", type=str)
+    context["NUM_USERS"] = len(db.table_names)-3
+    marked = []
+    j = 0 
+    for i in db.allTableColumns(context["USERNAME"]+"_marked").get("page_no",[]):
+        i = int(i)
+        marked.append(db.getTableRow("sentences", id=i))
+        context["PAGE_NO"] = i
+        marked[j]["PAGE_NO"] = i
+        if marked[j]["LABEL"] == "entailment":
+            E += 1
+        elif marked[j]["LABEL"] == "contradiction":
+            C += 1
+        elif marked[j]["LABEL"] == "neutral":
+            N += 1
+        else:
+            U += 1
+        marked[j]["STATUS"] = db.getTableRow(context["USERNAME"]+"_marked", page_no=i).get("status","")
+        record = db.getTableRow(context["USERNAME"], page_no=i)
+        marked[j].update(record)
+        if record == {}:
+            marked[j]["status"] = "pending"
+        else:
+            marked[j]["status"] = "complete"
+        j += 1
+        print(marked)
+    context["data"] = marked
+    context["NUM_SENTENCES"] = j
+    db.close()
+
+    return render_template("marked.html", **context)
+
 @app.route('/dashboard', methods=['GET','POST'])
 def dahsboard():
     E,C,N,U = 0,0,0,0
@@ -89,6 +152,16 @@ def dahsboard():
     context["C"] = 100*C/len(sentences)
     context["N"] = 100*N/len(sentences)
     context["U"] = 100*U/len(sentences)
+    USERS = db.allTableColumns("users").get("username",[])
+    ANNOTATION_PROGRESS = {}
+    for i,user in enumerate(USERS):
+        ANNOTATION_PROGRESS[user] = {}
+        table_length = db.getTableLength(user)
+        ANNOTATION_PROGRESS[user]['i'] = i+1
+        ANNOTATION_PROGRESS[user]['num'] = table_length
+        ANNOTATION_PROGRESS[user]['percent'] = int(100*table_length/len(sentences))
+    ANNOTATION_PROGRESS = {k:v for k,v in sorted(ANNOTATION_PROGRESS.items(), key=lambda x: x[1]['num'], reverse=True)}
+    context["ANNOTATION_PROGRESS"] = ANNOTATION_PROGRESS
     context["PERCENT_ANNOTATED_INT"] = 100*db.getTableLength(context['USERNAME'])/len(sentences)
     db.close()
 
