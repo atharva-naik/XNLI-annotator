@@ -123,7 +123,7 @@ def dahsboard():
     context = {}
     db = Database("data.sqlite")
     context["USERNAME"] = request.args.get('user', default="Anonymous", type=str)
-    context["NUM_USERS"] = len(db.table_names)-3
+    context["NUM_USERS"] = db.getTableLength("users")
     sentences = db.allTableRows("sentences")
     for i in range(size):
         if sentences[i]["LABEL"] == "entailment":
