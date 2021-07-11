@@ -18,14 +18,14 @@ Please follow the steps below for annotation:
 ##### Register
 Create a new user by clicking on the **Create** button on the **New User** tile, shown below, to keep track of your annotations. Immediately after creating your user you will be guided to the main annotation page.
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/index.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/index.png" width="800"/>
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/register.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/register.png" width="800"/>
 
 ##### Login Page
 If you are already registered just click on the tile corresponding to your username and you will be guided to a login screen as shown below.
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/login_page.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/login_page.png" width="800"/>
 
 ##### Main Annotation Page
 How to use the main annotation page:
