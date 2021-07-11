@@ -42,7 +42,7 @@ def index():
 
 @app.route('/instructions', methods=['GET','POST'])
 def instructions():
-    return render_template("instructions.html")
+    return redirect("https://github.com/atharva-naik/XNLI-annotator/blob/main/README.md") # render_template("instructions.html")
 
 @app.route('/thankyou',methods=['GET','POST'])
 def thankyou():
