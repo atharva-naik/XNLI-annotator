@@ -25,7 +25,7 @@ Create a new user by clicking on the **Create** button on the **New User** tile,
 ##### Login Page
 If you are already registered just click on the tile corresponding to your username and you will be guided to a login screen as shown below.
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/login_page.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/login.png" width="800"/>
 
 ##### Main Annotation Page
 How to use the main annotation page:
