@@ -13,9 +13,18 @@ This package requires flask
 ```git clone http://github.com/atharva-naik/XNLI-annotator```
 
 ### Instructions:
-Images and videos to explain the use of the site.
-##### User Page
-Create and login page for multiple users. Having a login/authentication based system helps to prevent people from seeing each other's annotations to prevent them from influencing each other.
+Please follow the steps below for annotation:
+
+##### Register
+Create a new user by clicking on the **Create** button on the **New User** tile, shown below, to keep track of your annotations. Immediately after creating your user you will be guided to the main annotation page.
+
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/index.png" width="800"/>
+
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/register.png" width="800"/>
+
+##### Login Page
+If you are already registered just click on the tile corresponding to your username and you will be guided to a login screen as shown below.
+
 <img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/login_page.png" width="800"/>
 
 ##### Main Annotation Page
@@ -33,15 +42,19 @@ How to use the main annotation page:
 ##### Navigation Pane
 The navigation pane shows "Pending" or "Complete" beside each sentence-pair/sample. Use it to get a bird's eye view of your progress.
 
-##### Bookmarked
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/navigation.png" width="800"/>
+
+##### Bookmarking
 The bookmarked section can be used to revisit annotations you are unsure about.
+
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/bookmarking.png" width="800"/>
 
 ##### Annotation dashboard
 1. Leaderboard: learn about the progress of your co-annotators, and how much progress you haved made. 
 2. Label distribution and other statistics: Total number of annotators, how many annotations you have finished, inter-annotator agreement and pertinent dataset statistics are shown here. 
 3. Export feature: export a jsonl file which is easy to read for both you and your computer (for processing and cleaning).
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/dashboard.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/dashboard_statistics.png" width="800"/>
 
 
-<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/dashboard2.png" width="800"/>
+<img src="https://github.com/atharva-naik/XNLI-annotator/blob/main/images/dashboard_annotations.png" width="800"/>
