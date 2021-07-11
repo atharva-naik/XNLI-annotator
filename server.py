@@ -117,6 +117,22 @@ def marked():
 
     return render_template("marked.html", **context)
 
+@app.route('/navigate', methods=['GET','POST'])
+def navigate():
+    username = request.args.get('user', default="Anonymous", type=str)
+    db = Database("data.sqlite")
+    table_length = db.getTableLength("sentences")
+    STATUS = []
+    for i in range(table_length):
+        record = db.getTableRow(username, page_no=i+1) 
+        if record == {}:
+            STATUS.append("pending")
+        else:
+            STATUS.append("complete")
+    db.close()
+
+    return render_template("navigate.html", USERNAME=username, STATUS=STATUS, NUM_SENTENCES=table_length)
+
 @app.route('/dashboard', methods=['GET','POST'])
 def dahsboard():
     E,C,N,U = 0,0,0,0
