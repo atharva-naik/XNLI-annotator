@@ -287,7 +287,7 @@
                             <div class="card br-0">
                                 <div class="card-body" style="text-align: center">
                                     <h5 class="box-title" style="text-align: center;">Export as JSONL</h5>
-                                    <a href ="{{ url_for('export', user=USERNAME) }}" class="export">Export</button>
+                                    <a href ="{{ url_for('export', user=USERNAME) }}" class="export">Export</a>
                                 </div>
                             </div><!-- /.card -->
                         </div>
@@ -389,7 +389,7 @@
                                         </thead>
                                         <tbody>
                                             {% for i in range(NUM_SENTENCES) %}
-                                                <tr>
+                                                <tr class="status-table-row" onclick="gotoPageIndex({{ i+1 }})">
                                                     <td class="serial">{{ i+1 }}</td>
                                                     <td>  <span class="name">{{ data[i]["SNLI_ID"] }}</span> </td>
                                                     <td>  <span class="name">{{ data[i]["PREMISE"] }}</span> </td>
@@ -401,9 +401,9 @@
                                                     <td>  <span class="U"><b>Premise</b><br>{{ data[i]["UP"] }}<br><b>Hypothesis</b><br>{{ data[i]["UH"] }}</span> </td>
                                                     <td>
                                                     {% if data[i]["status"] == "complete" %}
-                                                        <span class="badge badge-complete">Complete</span> 
+                                                        <button class="badge badge-complete" onclick="gotoPageIndex({{ i+1 }})">Complete</button> 
                                                     {% else %}
-                                                        <span class="badge badge-pending">Pending</span> 
+                                                        <button class="badge badge-pending" onclick="gotoPageIndex({{ i+1 }})">Pending</button> 
                                                     {% endif %}
                                                     </td>
                                                 </tr>
@@ -431,6 +431,13 @@
             </div>
             <!-- /.orders -->
     <div class="clearfix"></div>
+    <script>
+        function gotoPageIndex(index) {
+            pageUrl = new URL(window.location.href);
+            user = pageUrl.searchParams.get("user")
+            window.location.href = `${pageUrl.origin}/annotate?id=${index}&user=${user}`;
+        }
+    </script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="{{ url_for('static',filename='js/index.js') }}"></script>
     <!-- Scripts -->

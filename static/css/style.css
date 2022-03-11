@@ -476,9 +476,26 @@ canvas {
     text-transform: uppercase;
     font-weight: normal; }
   .order-table .badge-complete {
-    background: #00c292; }
+    background: #00c292; 
+    border: 0px;
+    font-weight: bold;
+  }
+  .badge-complete:hover {
+    color: #00c292;
+    background: #fff; 
+  }
   .order-table .badge-pending {
-    background: #fb9678; }
+    background: #fb9678; 
+    border: 0px;
+    font-weight: bold;
+  }
+  .badge-pending:hover {
+    color: #fb9678; 
+    background: #fff; 
+  }
+  .status-table-row:hover {
+    background: #eee;
+  }
 
 .messenger-box {
   padding-top: 15px; }

@@ -12,11 +12,18 @@ from flask import Flask, g, render_template, request, jsonify, redirect, flash, 
 
 
 # assert len(sys.argv)>1, "need to give filename of the json or csv"
+# data table name.
+# globals.
+DATA_JSONL_PATH = "data/mnli_mixed_formatted.jsonl"
+DATA_TABLE_NAME = "mnli_sentences"
+
 app = Flask(__name__, static_url_path='/static')
 db = Database("data.sqlite")
-db.dropTable("sentences")
-size = db.addTableFromJSONL("sentences",
-            path="data/SNLI_sample.jsonl")
+db.dropTable(DATA_TABLE_NAME)
+size = db.addTableFromJSONL(
+    DATA_TABLE_NAME,
+    path=DATA_JSONL_PATH
+)
 db.close()
 USERNAME = ""
 
@@ -91,7 +98,7 @@ def marked():
     j = 0 
     for i in db.allTableColumns(context["USERNAME"]+"_marked").get("page_no",[]):
         i = int(i)
-        marked.append(db.getTableRow("sentences", id=i))
+        marked.append(db.getTableRow(DATA_TABLE_NAME, id=i))
         context["PAGE_NO"] = i
         marked[j]["PAGE_NO"] = i
         if marked[j]["LABEL"] == "entailment":
@@ -121,7 +128,7 @@ def marked():
 def navigate():
     username = request.args.get('user', default="Anonymous", type=str)
     db = Database("data.sqlite")
-    table_length = db.getTableLength("sentences")
+    table_length = db.getTableLength(DATA_TABLE_NAME)
     STATUS = []
     for i in range(table_length):
         record = db.getTableRow(username, page_no=i+1) 
@@ -140,7 +147,7 @@ def dahsboard():
     db = Database("data.sqlite")
     context["USERNAME"] = request.args.get('user', default="Anonymous", type=str)
     context["NUM_USERS"] = db.getTableLength("users")
-    sentences = db.allTableRows("sentences")
+    sentences = db.allTableRows(DATA_TABLE_NAME)
     for i in range(size):
         if sentences[i]["LABEL"] == "entailment":
             E += 1
@@ -164,10 +171,10 @@ def dahsboard():
     context["NUM_ANNOTATED"] = db.getTableLength(context["USERNAME"])
     # context["PERCENT_ANNOTATED"] = f"{100*db.getTableLength(context['USERNAME'])/len(sentences)}%"
     context["INTERANNOTATOR_AGREEMENT"] = "NA"
-    context["E"] = 100*E/len(sentences)
-    context["C"] = 100*C/len(sentences)
-    context["N"] = 100*N/len(sentences)
-    context["U"] = 100*U/len(sentences)
+    context["E"] = round(100*E/len(sentences), 2)
+    context["C"] = round(100*C/len(sentences), 2)
+    context["N"] = round(100*N/len(sentences), 2)
+    context["U"] = round(100*U/len(sentences), 2)
     USERS = db.allTableColumns("users").get("username",[])
     ANNOTATION_PROGRESS = {}
     for i,user in enumerate(USERS):
@@ -200,7 +207,7 @@ def annotation_page():
                 CH="text",
                 NH="text",
                 UH="text")
-    record = db.getTableRow("sentences", id=id)
+    record = db.getTableRow(DATA_TABLE_NAME, id=id)
     annotation = db.getTableRow(username, page_no=id)
     db.close()
     record["NEXT_URL"] = f'/annotate?id={min(id+1,size)}&user={username}'
@@ -274,7 +281,7 @@ def save_annotation():
     data = request.get_json(force=True)  # parse as JSON
     username = data["username"]
     db = Database("data.sqlite")
-    record = db.getTableRow("sentences", id=data["id"])
+    record = db.getTableRow(DATA_TABLE_NAME, id=data["id"])
     data["SNLI_ID"] = record["SNLI_ID"]
     data["PAGE_NO"] = data["id"]
     del data["id"]
